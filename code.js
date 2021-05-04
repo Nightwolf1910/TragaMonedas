@@ -225,5 +225,9 @@ const apostarMenos2 = () => {
 document.getElementById("btL2").addEventListener("click", apostarMenos2);
 
 
-
 window.addEventListener("load",main);
+var primeraVez=true;
+const ventanaEmergente=()=>{
+    const divVentana=document.createElement("div");
+    divVentana.setAttribute("class","modal fade window-notice")
+}
