@@ -1,0 +1,33 @@
+body{
+    align-items: center;
+    justify-content: center;
+    background: url("https://i.imgur.com/CYqUDc1.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.maquina{
+    margin:10px;
+    text-align:center;
+    border-style:dotted;
+    height:50vh;
+    border-radius:15px;
+}
+
+#box{
+    height: 95vh;
+    border-style:solid;
+    background-color: rgba(255, 255, 255, .7);
+    border-radius:25px;
+}
+
+#imgBienvenida{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#IngresarBienv{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
