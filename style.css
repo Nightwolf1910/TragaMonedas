@@ -31,3 +31,42 @@ body{
     margin-right: auto;
     width: 200px;
 }
+#acercaDe{
+    background-image: url(media/acercaDe.jpg);
+}
+#instrucciones{
+    background-image: url(media/instrucciones.jpg);
+}
+#ranking{
+    background-image: url(media/ranking.jpg);
+}
+#musica{
+    background-image: url(media/musica.jpg);
+}
+.btn-circle.btn-sm {
+    height:40px;
+    width: 40px;
+    padding: 6px 0px;
+    border-radius: 20px;
+    font-size: 8px;
+    text-align: center;
+    background-repeat:no-repeat;
+}
+#usuarioImagen{
+    height:50px;
+    width: 50px;
+    margin-top: -20px;
+    margin-bottom: -15px;
+}
+#monedasImagen{
+    height:50px;
+    width: 50px;
+    margin-top: -20px;
+    margin-bottom: -15px;
+}
+#gananciaImagen{
+    height:50px;
+    width: 50px;
+    margin-top: -20px;
+    margin-bottom: -15px;
+}

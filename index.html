@@ -30,20 +30,41 @@
             <div class="row mt-4 mx-2">
                 <!--Display Nombre-->
                 <div class="col-4">
-                    <div class="alert alert-dark">
-                        TU NOMBRE
+                    <div class="row alert alert-dark">
+                        <div class="col-2">
+                            <img id="usuarioImagen" src="media/usuario.jpg">
+                        </div>
+                        <div class="col-10">
+                            TU NOMBRE
+                        </div>
                     </div>
                 </div>
-                <div class="col-4"></div>
                 <!--Display Monedas-->
                 <div class="col-4">
                     <div class="row alert alert-warning">
-                         <div class="col-4">
+                        <div class="col-2">
+                            <img id="monedasImagen" src="media/monedas.jpg">
+                        </div>
+                         <div class="col-3">
                              MONEDAS:
                          </div>
-                         <div class="col-8" id="monedas">
+                         <div class="col-7" id="monedas">
                              0
                          </div>
+                    </div>
+                </div>
+                <!--Display Ganancia-->
+                <div class="col-4">
+                    <div class="row alert alert-dark">
+                        <div class="col-2">
+                            <img id="gananciaImagen" src="media/ganancia.jpg">
+                        </div>
+                        <div class="col-3">
+                            GANANCIA:
+                        </div>
+                        <div class="col-7" id="ganancia">
+                            0
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,6 +113,12 @@
                 </div>
                 
             </div>
+            <div class="position-absolute start-50 translate-middle-x mt-3">
+                <button id="acercaDe" type="button" class="btn btn-circle btn-sm" title="Acerca de"></button>
+                <button id="instrucciones" type="button" class="btn btn-circle btn-sm" title="Instrucciones"></button>
+                <button id="ranking" type="button" class="btn btn-circle btn-sm" title="Ranking"></button>
+                <button id="musica" type="button" class="btn btn-circle btn-sm" title="Musica"></button>
+            </div>
         </div>
         <script src="code.js"></script>
         
@@ -104,5 +131,4 @@
                 $('#bienvenida').modal('show');
             });
         </script>
-    </body>
 </html>
