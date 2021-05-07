@@ -7,25 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     </head>
-    <body>
-        <div class="modal fade window-notice" id="bienvenida" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¡Bienvenido!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="https://casinoble.pe/wp-content/uploads/sites/5/2020/05/Casino-online-para-tragamonedas.jpg" id="imgBienvenida">
-                    <label class="col-form-label">Ingrese su nombre:</label>
-                    <input id="nombreInicio" type="text" class="form-control" value=" ">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="IngresarBienv">Ingresar</button>
-                </div>
-            </div>
-            </div>
-        </div>        
+    <body>      
         <div id="box" class = "mt-4 mb-2 mx-4">
             <div class="row mt-4 mx-2">
                 <!--Display Nombre-->
@@ -127,10 +109,46 @@
         <!--JQuery-->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     
-        <!--Mostrar Ventana Emergente al entrar-->
+        <!--Mostrar Ventana Emergente al entrar
         <script>
             $(document).ready(function(){
                 $('#bienvenida').modal('show');
             });
-        </script>
+        </script>-->
+    </body>
+    <!--Ventana de bienvenida-->
+    <div class="modal fade" id="bienvenida" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¡Bienvenido!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://casinoble.pe/wp-content/uploads/sites/5/2020/05/Casino-online-para-tragamonedas.jpg" id="imgBienvenida">
+                    <label class="col-form-label">Ingrese su nombre:</label>
+                    <input id="nombreInicio" type="text" class="form-control" value=" ">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="IngresarBienv">Ingresar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Venta del ranking-->
+    <div class="modal fade" id="modalRanking">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
 </html>

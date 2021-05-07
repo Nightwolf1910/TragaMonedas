@@ -132,6 +132,8 @@ var posAleatoria;
 var nomAnimalesAnonimos = [
     "Mono Anónimo", "Perro Anónimo", "Gato Anónimo", "Lemur Anónimo", "Cerdo Anónimo", "Loro Anónimo", "Ratón Anónimo", "Lagarto Anónimo", "T-rex Anónimo"
 ]
+var primeraVez=true;
+var modalBienvenida;
 
 const asignarNombreAnimal = () =>{
     posAleatoria = Math.floor(Math.random() * 3);
@@ -144,6 +146,15 @@ const asignarNombreAnimal = () =>{
 const main = () =>{
     asignarNombreAnimal();
     startMonedas();
+    //Mostrar la ventana bienvenida una vez
+    localStorage.setItem("primera vez",primeraVez);
+    const divBienvenida=document.querySelector("#bienvenida");
+    modalBienvenida=new bootstrap.Modal(divBienvenida);
+    if(primeraVez==true){
+        modalBienvenida.toggle();
+        primeraVez=false;
+        localStorage.setItem("primera vez",primeraVez);
+    }
 }
 
 const startMonedas = () =>{
@@ -223,6 +234,6 @@ const apostarMenos2 = () => {
     }
 }
 document.getElementById("btL2").addEventListener("click", apostarMenos2);
-
+//EL usuario ingresa por primera vez
 
 window.addEventListener("load",main);
