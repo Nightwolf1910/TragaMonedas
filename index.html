@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>TRABAJO PROGRA WEB</title>
-        <!--PRUEBA DE PUSH-->
         <link rel="stylesheet" href="style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
@@ -11,40 +10,40 @@
         <div id="box" class = "mt-4 mb-2 mx-4">
             <div class="row mt-4 mx-2">
                 <!--Display Nombre-->
-                <div class="col-4">
+                <div class="col-4 px-3">
                     <div class="row alert alert-dark">
-                        <div class="col-2">
-                            <img id="usuarioImagen" src="media/usuario.png">
+                        <div class="col-4">
+                            <img class="icono" src="media/usuario.png">
                         </div>
-                        <div class="col-10">
+                        <div class="col-8">
                             TU NOMBRE
                         </div>
                     </div>
                 </div>
                 <!--Display Monedas-->
-                <div class="col-4">
+                <div class="col-4 px-3">
                     <div class="row alert alert-primary">
-                        <div class="col-2">
-                            <img id="monedasImagen" src="media/monedas.jpg">
+                        <div class="col-4">
+                            <img class="icono" src="media/monedas.png">
                         </div>
-                         <div class="col-3">
+                         <div class="col-4">
                              MONEDAS:
                          </div>
-                         <div class="col-7" id="monedas">
+                         <div class="responsive-text col-4" id="monedas">
                              0
                          </div>
                     </div>
                 </div>
                 <!--Display Ganancia-->
-                <div class="col-4">
+                <div class="col-4 px-3">
                     <div class="row alert alert-dark">
-                        <div class="col-2">
-                            <img id="gananciaImagen" src="media/ganancia.jpg">
+                        <div class="col-4">
+                            <img class="icono" src="media/ganancia.png">
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             GANANCIA:
                         </div>
-                        <div class="col-7" id="ganancia">
+                        <div class="col-4" id="ganancia">
                             0
                         </div>
                     </div>
@@ -65,34 +64,34 @@
                 <div class="col">
                     <div class="row mx-2">
                         <div class="col-4 ml-4 d-flex justify-content-end">
-                            <button id="btL1">-</button>
+                            <button class="btn btn-dark" id="btL1">-</button>
                         </div>
-                        <div class="col-4 d-flex justify-content-center">
+                        <div class="apuestas col-4 d-flex justify-content-center">
                             <span id="apuesta1">100</span>
                         </div>
                         <div class="col-4 mr-4 d-flex justify-content-start">
-                            <button id="btR1">+</button>
+                            <button class="btn btn-dark"id="btR1">+</button>
                         </div>
                     </div>
                     <div class="row mt-2 mx-2 d-flex justify-content-center">
-                        <button id="btAPOSTAR1">APOSTAR</button>
+                        <button class="btn btn-dark" id="btAPOSTAR1">APOSTAR</button>
                     </div>
                 </div>
                 <!--Botones de apuesta 2-->
                 <div class="col">
                     <div class="row mx-2">
                         <div class="col-4 ml-4 d-flex justify-content-end">
-                            <button id="btL2">-</button>
+                            <button class="btn btn-dark" id="btL2">-</button>
                         </div>
-                        <div class="col-4 d-flex justify-content-center">
+                        <div class=" apuestas col-4 d-flex justify-content-center">
                             <span id="apuesta2">100</span>
                         </div>
                         <div class="col-4 mr-4 d-flex justify-content-start">
-                            <button id="btR2">+</button>
+                            <button class="btn btn-dark" id="btR2">+</button>
                         </div>
                     </div>
                     <div class="row mt-2 mx-2 d-flex justify-content-center">
-                        <button id="btAPOSTAR2">APOSTAR</button>
+                        <button class="btn btn-dark" id="btAPOSTAR2">APOSTAR</button>
                     </div>
                 </div>
                 
