@@ -81,3 +81,24 @@ body{
     height:auto;
 }
 
+#btAPOSTAR1{
+    width: 160px;
+    margin-top: 25px;
+    margin-right: 10px;
+}
+
+#btAPOSTAR2{
+    margin-top: 20px;
+    width: 160px;
+    margin-right: 20px;
+}
+
+#SubirBajarApuesta1{
+    margin-top: 330px;
+    margin-right: 10px;
+}
+
+#SubirBajarApuesta2{
+    margin-top: 330px;
+    margin-right: 10px;
+}
