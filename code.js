@@ -72,6 +72,10 @@ function imprimirIntento(i, maquina, intento){
         intento.ganancia, 
         intento.ganancia * apuesta
     )
+    var resultadoWin = intento.ganancia;
+    if(resultadoWin != 0){
+        console.log('GANASTE!')
+    }
 }
 //JUEGO - INICIO ===============================
 var distribuciones = getDistributions()
