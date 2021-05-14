@@ -11,18 +11,26 @@ body{
     text-align:center;
     height:50vh;
     border-radius:15px;
+    position: relative;
 }
-
+/*
 #maquinaA{
-    background-image: url(media/Tragamonedas1.png);
-    background-position: 100%;
-    background-size: 100%;
+    position: relative;
 }
 
 #maquinaB{
-    background-image: url(media/Tragamonedas2.png);
-    background-position: 100%;
-    background-size: 100%;
+    position: relative;
+}*/
+#botones_info{
+    position: absolute;
+    top: 800px;
+}
+
+.botones_apuesta{
+    position: absolute;
+    top: 0;
+    margin-left: 120px;
+    margin-top: 30px;
 }
 
 #box{
@@ -30,6 +38,9 @@ body{
     border-style:solid;
     background-color: rgba(255, 255, 255, .7);
     border-radius:25px;
+    min-width: 1000px;
+    max-width: 1000px;
+    position: relative;
 }
 
 #imgBienvenida{
@@ -82,14 +93,14 @@ body{
 }
 
 #btAPOSTAR1{
-    width: 160px;
+    width: 190px;
     margin-top: 25px;
     margin-right: 10px;
 }
 
 #btAPOSTAR2{
     margin-top: 20px;
-    width: 160px;
+    width: 190px;
     margin-right: 20px;
 }
 
