@@ -23,14 +23,7 @@ div { max-width: 100%; }
     max-height:max-content;
     overflow: hidden;
 }
-/*
-#maquinaA{
-    position: relative;
-}
 
-#maquinaB{
-    position: relative;
-}*/
 #botones_info{
     position: absolute;
 }
@@ -133,4 +126,29 @@ div { max-width: 100%; }
     border: solid 1px;
     background-color:rgba(255, 255, 255, .5);
     border-radius: 10px;
+}
+
+.letras-box{
+    position: absolute;
+    top: 262px;
+    right: 213px;
+}
+
+.letra{
+    border: solid 1px;
+    background-color:rgba(255, 255, 255, .5);
+    border-radius: 10px;
+    padding: 10%;
+}
+
+#LetraM2-A{
+    width: 60px;
+    margin-right: 35px;
+    
+}
+
+#LetraM2-B{
+    width: 60px;
+    margin-left: 35px;
+    
 }
