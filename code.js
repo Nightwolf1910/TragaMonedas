@@ -64,7 +64,7 @@ function apostarYJugar(maquina, apuesta){
     }
 }
 
-function imprimirIntento(i, maquina, intento){
+function imprimirIntento(i, maquina, intento, apuesta){
      console.log(
         i + '-',
         maquina + ':', 
@@ -74,6 +74,21 @@ function imprimirIntento(i, maquina, intento){
     )
 
     var resultadoWin = intento.ganancia;    
+    var letras = intento.resultado.split("");
+    var letra1 = letras[0]; 
+    var letra2 = letras[1];
+
+    if(maquina == 'maquinaA'){
+        const letraA1 = document.querySelector("#LetraM1-A");
+        letraA1.innerHTML = `${letra1}`
+        const letraA2 = document.querySelector("#LetraM1-B");
+        letraA2.innerHTML = `${letra2}`
+    }else{
+        const letraA1 = document.querySelector("#LetraM2-A");
+        letraA1.innerHTML = `${letra1}`
+        const letraA2 = document.querySelector("#LetraM2-B");
+        letraA2.innerHTML = `${letra2}`
+    }
     
     if(resultadoWin != 0){
         if(maquina == 'maquinaA'){
@@ -101,7 +116,7 @@ var maquinas = {
     maquinaA: distribuciones[0],
     maquinaB: distribuciones[1]
 }
-
+/*
 //JUGAR ========================================
 //INTENTO 1
 //PRESIONAR EL BOTON DE UNA MAQUINA
@@ -142,7 +157,7 @@ var maquina = 'maquinaA'
 var apuesta = 10
 var intento = apostarYJugar(maquinas[maquina])
 imprimirIntento(i, maquina, intento)
-
+*/
 
 //AQUI TERMINA EL CÓDIGO DEL PROFE
 
@@ -161,20 +176,6 @@ const asignarNombreAnimal = () =>{
 
     const inputNombre = document.querySelector("#nombreInicio");
     inputNombre.setAttribute("value", `${nombre}`)
-}
-
-const main = () =>{
-    asignarNombreAnimal();
-    startMonedas();
-    //Mostrar la ventana bienvenida una vez
-    localStorage.setItem("primera vez",primeraVez);
-    const divBienvenida=document.querySelector("#bienvenida");
-    modalBienvenida=new bootstrap.Modal(divBienvenida);
-    if(primeraVez==true){
-        modalBienvenida.toggle();
-        primeraVez=false;
-        localStorage.setItem("primera vez",primeraVez);
-    }
 }
 
 const startMonedas = () =>{
@@ -255,5 +256,37 @@ const apostarMenos2 = () => {
 }
 document.getElementById("btL2").addEventListener("click", apostarMenos2);
 //EL usuario ingresa por primera vez
+
+const ApostarOnClickMaquinaA = () =>{
+    var i = 1
+    var maquina = 'maquinaA'
+    var apuesta = parseInt(document.getElementById("apuesta1"))
+    var intento = apostarYJugar(maquinas[maquina]) 
+    imprimirIntento(i, maquina, intento,apuesta)
+}
+document.getElementById("btAPOSTAR1").addEventListener("click", ApostarOnClickMaquinaA);
+
+const ApostarOnClickMaquinaB = () =>{
+    var i = 1
+    var maquina = 'maquinaB'
+    var apuesta = parseInt(document.getElementById("apuesta2"))
+    var intento = apostarYJugar(maquinas[maquina]) 
+    imprimirIntento(i, maquina, intento,apuesta)
+}
+document.getElementById("btAPOSTAR2").addEventListener("click", ApostarOnClickMaquinaB);
+
+const main = () =>{
+    asignarNombreAnimal();
+    startMonedas();
+    //Mostrar la ventana bienvenida una vez
+    localStorage.setItem("primera vez",primeraVez);
+    const divBienvenida=document.querySelector("#bienvenida");
+    modalBienvenida=new bootstrap.Modal(divBienvenida);
+    if(primeraVez==true){
+        modalBienvenida.toggle();
+        primeraVez=false;
+        localStorage.setItem("primera vez",primeraVez);
+    }
+}
 
 window.addEventListener("load",main);
