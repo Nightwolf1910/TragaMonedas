@@ -260,7 +260,8 @@ document.getElementById("btL2").addEventListener("click", apostarMenos2);
 const ApostarOnClickMaquinaA = () =>{
     var i = 1
     var maquina = 'maquinaA'
-    var apuesta = parseInt(document.getElementById("apuesta1"))
+    var displayApuesta = document.getElementById("apuesta1")
+    var apuesta = parseInt(displayApuesta.innerHTML)
     var intento = apostarYJugar(maquinas[maquina]) 
     imprimirIntento(i, maquina, intento,apuesta)
 }
@@ -269,7 +270,8 @@ document.getElementById("btAPOSTAR1").addEventListener("click", ApostarOnClickMa
 const ApostarOnClickMaquinaB = () =>{
     var i = 1
     var maquina = 'maquinaB'
-    var apuesta = parseInt(document.getElementById("apuesta2"))
+    var displayApuesta = document.getElementById("apuesta2")
+    var apuesta = parseInt(displayApuesta.innerHTML)
     var intento = apostarYJugar(maquinas[maquina]) 
     imprimirIntento(i, maquina, intento,apuesta)
 }
