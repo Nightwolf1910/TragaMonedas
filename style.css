@@ -1,4 +1,9 @@
+html, body{
+    overflow: hidden;
+}
+
 body{
+    position: relative;
     align-items: center;
     justify-content: center;
     background: url("media/background.jpg") no-repeat center center fixed;
@@ -6,11 +11,17 @@ body{
     background-position: center;
 }
 
+div { max-width: 100%; }
+
 .maquina{
     margin:10px;
     text-align:center;
     border-radius:15px;
     position: relative;
+    width: 100%;
+    height: auto;
+    max-height:max-content;
+    overflow: hidden;
 }
 /*
 #maquinaA{
@@ -32,7 +43,8 @@ body{
 }
 
 #box{
-    height: 95vh;
+    min-height:95vh;
+    max-height:none;
     border-style:solid;
     background-color: rgba(255, 255, 255, .7);
     border-radius:25px;
@@ -84,6 +96,8 @@ body{
     border-radius: 10px;
     justify-content: center;
 }
+
+
 
 .responsive-text{
     max-width: 100%;
