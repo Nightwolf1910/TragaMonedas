@@ -72,9 +72,25 @@ function imprimirIntento(i, maquina, intento){
         intento.ganancia, 
         intento.ganancia * apuesta
     )
-    var resultadoWin = intento.ganancia;
+
+    var resultadoWin = intento.ganancia;    
+    
     if(resultadoWin != 0){
-        console.log('GANASTE!')
+        if(maquina == 'maquinaA'){
+            const msjWin = document.querySelector("#mensajes1");
+            msjWin.innerHTML = '¡GANASTE!'
+        }else{
+            const msjWin = document.querySelector("#mensajes2");
+            msjWin.innerHTML = '¡GANASTE!'
+        }
+    }else{
+        if(maquina == 'maquinaA'){
+            const msjWin = document.querySelector("#mensajes1");
+            msjWin.innerHTML = '-'
+        }else{
+            const msjWin = document.querySelector("#mensajes2");
+            msjWin.innerHTML = '-'
+        }
     }
 }
 //JUEGO - INICIO ===============================
