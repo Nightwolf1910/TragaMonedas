@@ -90,14 +90,12 @@ div { max-width: 100%; }
     width:100%;
 }
 
-.apuestas{
+.display_box{
     border: solid 1px;
     background-color:rgba(255, 255, 255, .5);
     border-radius: 10px;
     justify-content: center;
 }
-
-
 
 .responsive-text{
     max-width: 100%;
@@ -124,4 +122,15 @@ div { max-width: 100%; }
 #SubirBajarApuesta2{
     margin-top: 330px;
     margin-right: 10px;
+}
+
+.mensajes{
+    position: absolute;
+    top: 155px;
+    right: 192px;
+    padding-right: 15%;
+    padding-left: 15%;
+    border: solid 1px;
+    background-color:rgba(255, 255, 255, .5);
+    border-radius: 10px;
 }
