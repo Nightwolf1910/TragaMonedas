@@ -76,6 +76,7 @@ function imprimirIntento(i, maquina, intento, apuesta){
     )
 
     var resultadoWin = intento.ganancia;    
+    var gananciaTotal = intento.ganancia * apuesta;
     var letras = intento.resultado.split("");
     var letra1 = letras[0]; 
     var letra2 = letras[1];
@@ -114,6 +115,8 @@ function imprimirIntento(i, maquina, intento, apuesta){
 
     if(win == false){
         perderApuesta(apuesta);
+    }else{
+        ganarApuesta(apuesta, gananciaTotal);
     }
 }
 //JUEGO - INICIO ===============================
@@ -193,6 +196,11 @@ const startMonedas = () =>{
 
 const perderApuesta = (apuesta) =>{
     monedas = monedas - apuesta;
+    setMonedas(monedas)
+}
+
+const ganarApuesta = (apuesta, ganancia) =>{
+    monedas = (monedas-apuesta) + ganancia;
     setMonedas(monedas)
 }
 
