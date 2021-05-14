@@ -138,9 +138,10 @@ var nomAnimalesAnonimos = [
 ]
 var primeraVez=true;
 var modalBienvenida;
+var nombre="";
 
 const asignarNombreAnimal = () =>{
-    posAleatoria = Math.floor(Math.random() * 3);
+    posAleatoria = Math.floor(Math.random() * 9);
     var nombre = nomAnimalesAnonimos[posAleatoria];
 
     const inputNombre = document.querySelector("#nombreInicio");
@@ -159,6 +160,18 @@ const main = () =>{
         primeraVez=false;
         localStorage.setItem("primera vez",primeraVez);
     }
+    const divModalRanking=document.querySelector("#modalRanking");
+    modalCrearRanking=new bootstrap.Modal(divModalRanking);
+    const butAbrirRanking=document.querySelector("#ranking");
+    butAbrirRanking.addEventListener("click",butAbrirRankingOnClick);
+
+    const divModalCambiarNombre=document.querySelector("#modalCambiarNombre");
+    modalCambiarNombre=new bootstrap.Modal(divModalCambiarNombre);
+    const labelNombre=document.querySelector("#nombre");
+    labelNombre.addEventListener("click",butCambiarNombreOnClick);
+
+    document.getElementById("ingresarNombreInicio").addEventListener("click",butIngresarNombreInicialOnClick);
+    document.getElementById("ingresarNombreCambiado").addEventListener("click",butIngresarNombreCambiadoOnClick);
 }
 
 const startMonedas = () =>{
@@ -238,6 +251,18 @@ const apostarMenos2 = () => {
     }
 }
 document.getElementById("btL2").addEventListener("click", apostarMenos2);
-//EL usuario ingresa por primera vez
-
+const butAbrirRankingOnClick=()=>{
+    modalCrearRanking.toggle();
+}
+const butCambiarNombreOnClick=()=>{
+    modalCambiarNombre.toggle();
+}
+const butIngresarNombreInicialOnClick=()=>{
+    nombre=document.getElementById("nombreInicio").value;
+    document.getElementById("nombre").innerText=nombre;
+}
+const butIngresarNombreCambiadoOnClick=()=>{
+    nombre=document.getElementById("nombreCambiado").value;
+    document.getElementById("nombre").innerText=nombre;
+}
 window.addEventListener("load",main);
