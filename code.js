@@ -1,3 +1,5 @@
+var win=false; //flag
+
 //JUEGO - INSTALACION =========
 function bernoulli(p){
     return 1 && ( Math.random() < p ) || 0 
@@ -91,6 +93,7 @@ function imprimirIntento(i, maquina, intento, apuesta){
     }
     
     if(resultadoWin != 0){
+        win = true;
         if(maquina == 'maquinaA'){
             const msjWin = document.querySelector("#mensajes1");
             msjWin.innerHTML = '¡GANASTE!'
@@ -99,6 +102,7 @@ function imprimirIntento(i, maquina, intento, apuesta){
             msjWin.innerHTML = '¡GANASTE!'
         }
     }else{
+        win = false;
         if(maquina == 'maquinaA'){
             const msjWin = document.querySelector("#mensajes1");
             msjWin.innerHTML = '-'
@@ -106,6 +110,10 @@ function imprimirIntento(i, maquina, intento, apuesta){
             const msjWin = document.querySelector("#mensajes2");
             msjWin.innerHTML = '-'
         }
+    }
+
+    if(win == false){
+        perderApuesta(apuesta);
     }
 }
 //JUEGO - INICIO ===============================
@@ -180,11 +188,16 @@ const asignarNombreAnimal = () =>{
 
 const startMonedas = () =>{
     monedas = 200;
-    setMonedas()
+    setMonedas(monedas)
 } 
 
-const setMonedas = () => {
-    document.getElementById("monedas").innerText = monedas;
+const perderApuesta = (apuesta) =>{
+    monedas = monedas - apuesta;
+    setMonedas(monedas)
+}
+
+const setMonedas = (cant) => {
+    document.getElementById("monedas").innerText = cant;
 }
 
 const setApuestas10 = () => {
