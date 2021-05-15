@@ -77,6 +77,7 @@ function imprimirIntento(i, maquina, intento, apuesta){
 
     var resultadoWin = intento.ganancia;    
     var gananciaTotal = intento.ganancia * apuesta;
+
     var letras = intento.resultado.split("");
     var letra1 = letras[0]; 
     var letra2 = letras[1];
@@ -119,6 +120,7 @@ function imprimirIntento(i, maquina, intento, apuesta){
         ganarApuesta(apuesta, gananciaTotal);
     }
 }
+
 //JUEGO - INICIO ===============================
 var distribuciones = getDistributions()
 console.log(distribuciones)
@@ -279,24 +281,67 @@ document.getElementById("btL2").addEventListener("click", apostarMenos2);
 //EL usuario ingresa por primera vez
 
 const ApostarOnClickMaquinaA = () =>{
-    var i = 1
-    var maquina = 'maquinaA'
-    var displayApuesta = document.getElementById("apuesta1")
-    var apuesta = parseInt(displayApuesta.innerHTML)
-    var intento = apostarYJugar(maquinas[maquina]) 
-    imprimirIntento(i, maquina, intento,apuesta)
+    movLetrasMA()
 }
 document.getElementById("btAPOSTAR1").addEventListener("click", ApostarOnClickMaquinaA);
 
 const ApostarOnClickMaquinaB = () =>{
-    var i = 1
-    var maquina = 'maquinaB'
-    var displayApuesta = document.getElementById("apuesta2")
-    var apuesta = parseInt(displayApuesta.innerHTML)
-    var intento = apostarYJugar(maquinas[maquina]) 
-    imprimirIntento(i, maquina, intento,apuesta)
+    movLetrasMB()
 }
 document.getElementById("btAPOSTAR2").addEventListener("click", ApostarOnClickMaquinaB);
+
+
+const movLetrasMA = () =>{
+    var cont=0;
+    const letraRandom = () =>{
+        var letra1 = ['J', 'Q', 'K', 'A'];
+        var letra2 = ['Q', 'K', 'A', 'J'];
+        //var rand = Math.floor(Math.random() * 4);
+        
+        document.querySelector("#LetraM1-A").innerHTML = letra1[cont];
+        document.querySelector("#LetraM1-B").innerHTML = letra2[cont];
+        cont++;
+        //console.log(letra[rand])
+    
+        if(cont>3){
+            clearInterval(repetir)
+            var maquina = 'maquinaA'
+            var displayApuesta = document.getElementById("apuesta1")
+            var apuesta = parseInt(displayApuesta.innerHTML)
+            var intento = apostarYJugar(maquinas[maquina])
+            imprimirIntento(1, maquina, intento,apuesta)
+        }
+    }
+    
+    letraRandom()
+    var repetir = setInterval(letraRandom,300);
+}
+
+const movLetrasMB = () =>{
+    var cont=0;
+    const letraRandom = () =>{
+        var letra1 = ['J', 'Q', 'K', 'A'];
+        var letra2 = ['Q', 'K', 'A', 'J'];
+        //var rand = Math.floor(Math.random() * 4);
+        
+        document.querySelector("#LetraM2-A").innerHTML = letra1[cont];
+        document.querySelector("#LetraM2-B").innerHTML = letra2[cont];
+        cont++;
+        //console.log(letra[rand])
+    
+        if(cont>3){
+            clearInterval(repetir)
+            var maquina = 'maquinaB'
+            var displayApuesta = document.getElementById("apuesta2")
+            var apuesta = parseInt(displayApuesta.innerHTML)
+            var intento = apostarYJugar(maquinas[maquina])
+            imprimirIntento(1, maquina, intento,apuesta)
+        }
+    }
+    
+    letraRandom()
+    var repetir = setInterval(letraRandom,300);
+}
 
 const main = () =>{
     asignarNombreAnimal();
