@@ -1,5 +1,6 @@
 var win=false; //flag
-
+var animToggleA=false;
+var animToggleB=false;
 //JUEGO - INSTALACION =========
 function bernoulli(p){
     return 1 && ( Math.random() < p ) || 0 
@@ -281,11 +282,15 @@ document.getElementById("btL2").addEventListener("click", apostarMenos2);
 //EL usuario ingresa por primera vez
 
 const ApostarOnClickMaquinaA = () =>{
+    animToggleA=true;
+    animacionMA()
     movLetrasMA_1()
 }
 document.getElementById("btAPOSTAR1").addEventListener("click", ApostarOnClickMaquinaA);
 
 const ApostarOnClickMaquinaB = () =>{
+    animToggleB=true;
+    animacionMB()
     movLetrasMB_1()
 }
 document.getElementById("btAPOSTAR2").addEventListener("click", ApostarOnClickMaquinaB);
@@ -391,24 +396,49 @@ const mostrarResultado = (resultWin, maq) =>{
     if(resultWin != 0){
         win = true;
         if(maq == 'maquinaA'){
+            animToggleA=false;
+            animacionMA();
             const msjWin = document.querySelector("#mensajes1");
             msjWin.innerHTML = '¡GANASTE!'
         }else{
+            animToggleB=false;
+            animacionMB();
             const msjWin = document.querySelector("#mensajes2");
             msjWin.innerHTML = '¡GANASTE!'
         }
     }else{
         win = false;
         if(maq == 'maquinaA'){
+            animToggleA=false;
+            animacionMA();
             const msjWin = document.querySelector("#mensajes1");
             msjWin.innerHTML = '-'
         }else{
+            animToggleB=false;
+            animacionMB();
             const msjWin = document.querySelector("#mensajes2");
             msjWin.innerHTML = '-'
         }
     }
 }
     
+const animacionMA = () =>{
+    const img = document.querySelector("#laVeridica")
+    if(animToggleA == true){
+        img.setAttribute("src",'media/Tragamonedas1-2.png')
+    }else{
+        img.setAttribute("src",'media/Tragamonedas1.png')
+    }
+}
+
+const animacionMB = () =>{
+    const img = document.querySelector("#laSuertuda")
+    if(animToggleB == true){
+        img.setAttribute("src",'media/Tragamonedas2-2.png')
+    }else{
+        img.setAttribute("src",'media/Tragamonedas2.png')
+    }
+}
 
 const main = () =>{
     asignarNombreAnimal();
