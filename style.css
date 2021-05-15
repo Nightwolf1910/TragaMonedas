@@ -11,18 +11,29 @@ body{
     background-position: center;
 }
 
-div { max-width: 100%; }
-
 .maquina{
     margin:10px;
     text-align:center;
     border-radius:15px;
     position: relative;
-    width: 100%;
+    width: 50%;
     height: auto;
     max-height:max-content;
     overflow: hidden;
 }
+
+.maquina img{
+    width:100%;
+    height:auto;
+}
+
+/*.maquina .btn{
+    position: absolute;
+    transform: translate(25%, 25%);
+    -webkit-transform: translate(25%, 25%);
+    top: 50%;
+    left: 50%;
+}*/
 
 #botones_info{
     position: absolute;
@@ -30,19 +41,17 @@ div { max-width: 100%; }
 
 .botones_apuesta{
     position: absolute;
-    top: 0;
-    margin-left: 165px;
-    margin-top: 120px;
+    top:0;
+    margin-left: 31%;
 }
 
 #box{
+    width:auto;
     min-height:95vh;
     max-height:none;
     border-style:solid;
     background-color: rgba(255, 255, 255, .7);
     border-radius:25px;
-    min-width: 1250px;
-    max-width:1250px;
     position: center;
 }
 
@@ -95,33 +104,22 @@ div { max-width: 100%; }
     height:auto;
 }
 
-#btAPOSTAR1{
-    width: 190px;
-    margin-top: 25px;
-    margin-right: 10px;
+#btAPOSTAR1, #btAPOSTAR2{
+    width: 130%;
+    margin-top: 10%;
 }
 
-#btAPOSTAR2{
-    margin-top: 20px;
-    width: 190px;
-    margin-right: 20px;
+
+#SubirBajarApuesta1, #SubirBajarApuesta2{
+    margin-top: 250%;
 }
 
-#SubirBajarApuesta1{
-    margin-top: 330px;
-    margin-right: 10px;
-}
-
-#SubirBajarApuesta2{
-    margin-top: 330px;
-    margin-right: 10px;
-}
 
 .mensajes{
     position: absolute;
-    top: 155px;
-    right: 195px;
-    min-width: 200px;
+    top: 24%;
+    right: 34%;
+    min-width:34%;
     
     border: solid 1px;
     background-color:rgba(255, 255, 255, .5);
@@ -130,8 +128,8 @@ div { max-width: 100%; }
 
 .letras-box{
     position: absolute;
-    top: 262px;
-    right: 213px;
+    top: 40%;
+    right:37.5%;
 }
 
 .letra{
@@ -141,26 +139,12 @@ div { max-width: 100%; }
     padding: 10%;
 }
 
-#LetraM2-A{
-    width: 60px;
-    margin-right: 35px;
-    
+#LetraM2-A, #LetraM1-A{
+    width:55px;
+    margin-right:35px;
 }
 
-#LetraM2-B{
-    width: 60px;
-    margin-left: 35px;
-    
-}
-
-#LetraM1-A{
-    width: 60px;
-    margin-right: 35px;
-    
-}
-
-#LetraM1-B{
-    width: 60px;
-    margin-left: 35px;
-    
+#LetraM2-B, #LetraM1-B{
+    width:55px;
+    margin-left:35px;
 }
