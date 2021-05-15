@@ -218,7 +218,10 @@ const setApuestas10 = () => {
 }
 
 const apostarMenos1 = () => {
-    document.getElementById("btR1").disabled=false;
+    if((document.getElementById("apuesta1").innerText)<=monedas+10){
+        document.getElementById("btR1").disabled=false;
+        document.getElementById("btAPOSTAR1").disabled=false;
+    }
     while(document.getElementById("btL1").disabled==false){
         if(parseInt(document.getElementById("apuesta1").innerText)>0){
             document.getElementById("apuesta1").innerText=parseInt(document.getElementById("apuesta1").innerText)-10;
@@ -266,7 +269,10 @@ const apostarMas2 = () => {
 document.getElementById("btR2").addEventListener("click", apostarMas2);
 
 const apostarMenos2 = () => {
-    document.getElementById("btR2").disabled=false;
+    if((document.getElementById("apuesta2").innerText)<=monedas+10){
+        document.getElementById("btR2").disabled=false;
+        document.getElementById("btAPOSTAR2").disabled=false;
+    }
     while(document.getElementById("btL2").disabled==false){
         if(parseInt(document.getElementById("apuesta2").innerText)>0){
             document.getElementById("apuesta2").innerText=parseInt(document.getElementById("apuesta2").innerText)-10;
@@ -292,21 +298,67 @@ const butIngresarNombreInicialOnClick=()=>{
 }
 const butIngresarNombreCambiadoOnClick=()=>{
     nombre=document.getElementById("nombreCambiado").value;
-    document.getElementById("nombre").innerText=nombre;
+    document.getElementById("nombre").innerText=nombre; 
+    setApuestas10();
 }
-//EL usuario ingresa por primera vez
 
-const ApostarOnClickMaquinaA = () =>{
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+const ApostarOnClickMaquinaA = async () =>{
     animToggleA=true;
     animacionMA()
     movLetrasMA_1()
+    document.getElementById("btAPOSTAR1").disabled=true;
+    document.getElementById("btR1").disabled=true;
+    document.getElementById("btL1").disabled=true;
+    await sleep(2000);
+    if(document.getElementById("apuesta1").innerText>monedas){
+        document.getElementById("btAPOSTAR1").disabled=true;
+        document.getElementById("btR1").disabled=true;
+        document.getElementById("btL1").disabled=false;
+    }else{
+        document.getElementById("btAPOSTAR1").disabled=false;
+        document.getElementById("btR1").disabled=false;
+        document.getElementById("btL1").disabled=false;
+    }
+    if(monedas==0){
+        document.getElementById("btAPOSTAR1").disabled=true;
+        document.getElementById("btR1").disabled=true;
+        document.getElementById("btL1").disabled=true;
+        document.getElementById("btAPOSTAR2").disabled=true;
+        document.getElementById("btR2").disabled=true;
+        document.getElementById("btL2").disabled=true;
+    }
 }
 document.getElementById("btAPOSTAR1").addEventListener("click", ApostarOnClickMaquinaA);
 
-const ApostarOnClickMaquinaB = () =>{
+const ApostarOnClickMaquinaB = async () =>{
     animToggleB=true;
     animacionMB()
     movLetrasMB_1()
+    document.getElementById("btAPOSTAR2").disabled=true;
+    document.getElementById("btR2").disabled=true;
+    document.getElementById("btL2").disabled=true;
+    await sleep(2000);
+    if(document.getElementById("apuesta2").innerText>monedas){
+        document.getElementById("btAPOSTAR2").disabled=true;
+        document.getElementById("btR2").disabled=true;
+        document.getElementById("btL2").disabled=false;
+    }else{
+        document.getElementById("btAPOSTAR2").disabled=false;
+        document.getElementById("btR2").disabled=false;
+        document.getElementById("btL2").disabled=false;
+    }
+    if(monedas==0){
+        document.getElementById("btAPOSTAR1").disabled=true;
+        document.getElementById("btR1").disabled=true;
+        document.getElementById("btL1").disabled=true;
+        document.getElementById("btAPOSTAR2").disabled=true;
+        document.getElementById("btR2").disabled=true;
+        document.getElementById("btL2").disabled=true;
+    }
 }
 document.getElementById("btAPOSTAR2").addEventListener("click", ApostarOnClickMaquinaB);
 
@@ -458,6 +510,7 @@ const animacionMB = () =>{
 const main = () =>{
     asignarNombreAnimal();
     startMonedas();
+    setApuestas10();
     //Mostrar la ventana bienvenida una vez
     localStorage.setItem("primera vez",primeraVez);
     const divBienvenida=document.querySelector("#bienvenida");

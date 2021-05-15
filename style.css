@@ -143,13 +143,15 @@ body{
     padding: 10%;
 }
 
+#LetraM2-A, #LetraM1-A, #LetraM2-B, #LetraM1-B{
+    width: 50px;
+}
+
 #LetraM2-A, #LetraM1-A{
-    width:55px;
-    margin-right:35px;
+    margin-right:0px;
 }
 #LetraM2-B, #LetraM1-B{
-    width:55px;
-    margin-left:35px;
+    margin-left:0px;
 }
 
 
