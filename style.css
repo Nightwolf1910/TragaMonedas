@@ -1,4 +1,9 @@
+html, body{
+    overflow: hidden;
+}
+
 body{
+    position: relative;
     align-items: center;
     justify-content: center;
     background: url("media/background.jpg") no-repeat center center fixed;
@@ -6,20 +11,19 @@ body{
     background-position: center;
 }
 
+div { max-width: 100%; }
+
 .maquina{
     margin:10px;
     text-align:center;
     border-radius:15px;
     position: relative;
-}
-/*
-#maquinaA{
-    position: relative;
+    width: 100%;
+    height: auto;
+    max-height:max-content;
+    overflow: hidden;
 }
 
-#maquinaB{
-    position: relative;
-}*/
 #botones_info{
     position: absolute;
 }
@@ -27,12 +31,13 @@ body{
 .botones_apuesta{
     position: absolute;
     top: 0;
-    margin-left: 165px;
+    margin-left: 170px;
     margin-top: 120px;
 }
 
 #box{
-    height: 95vh;
+    min-height:95vh;
+    max-height:none;
     border-style:solid;
     background-color: rgba(255, 255, 255, .7);
     border-radius:25px;
@@ -78,7 +83,7 @@ body{
     width:100%;
 }
 
-.apuestas{
+.display_box{
     border: solid 1px;
     background-color:rgba(255, 255, 255, .5);
     border-radius: 10px;
@@ -93,13 +98,17 @@ body{
 #btAPOSTAR1{
     width: 190px;
     margin-top: 25px;
-    margin-right: 10px;
+    margin-right: 5px;
+    height: 35px;
+    padding-top: 1px;
 }
 
 #btAPOSTAR2{
-    margin-top: 20px;
     width: 190px;
-    margin-right: 20px;
+    margin-top: 25px;
+    margin-right: 5px;
+    height: 35px;
+    padding-top: 1px;
 }
 
 #SubirBajarApuesta1{
@@ -110,4 +119,70 @@ body{
 #SubirBajarApuesta2{
     margin-top: 330px;
     margin-right: 10px;
+}
+
+.mensajes{
+    position: absolute;
+    top: 155px;
+    right: 195px;
+    min-width: 200px;
+    
+    border: solid 1px;
+    background-color:rgba(255, 255, 255, .5);
+    border-radius: 10px;
+}
+
+.letras-box{
+    position: absolute;
+    top: 262px;
+    right: 213px;
+}
+
+.letra{
+    border: solid 1px;
+    background-color:rgba(255, 255, 255, .5);
+    border-radius: 10px;
+    padding: 10%;
+}
+
+#LetraM2-A{
+    width: 60px;
+    margin-right: 35px;
+    
+}
+
+#LetraM2-B{
+    width: 60px;
+    margin-left: 35px;
+    
+}
+
+#LetraM1-A{
+    width: 60px;
+    margin-right: 35px;
+    
+}
+
+#LetraM1-B{
+    width: 60px;
+    margin-left: 35px;
+    
+}
+
+.ganancia{
+    border: solid 1px;
+    background-color:rgba(255, 255, 255, .5);
+    border-radius: 10px;
+    justify-content: center;
+    position: absolute;
+}
+
+#gananciaM1{
+    margin-top: 15px;
+    margin-left: 52px;
+}
+
+#gananciaM2{
+    margin-top: 15px;
+    margin-left: 52px;
 }

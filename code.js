@@ -1,3 +1,6 @@
+var win=false; //flag
+var animToggleA=false;
+var animToggleB=false;
 //JUEGO - INSTALACION =========
 function bernoulli(p){
     return 1 && ( Math.random() < p ) || 0 
@@ -64,7 +67,7 @@ function apostarYJugar(maquina, apuesta){
     }
 }
 
-function imprimirIntento(i, maquina, intento){
+function imprimirIntento(i, maquina, intento, apuesta){
      console.log(
         i + '-',
         maquina + ':', 
@@ -72,11 +75,53 @@ function imprimirIntento(i, maquina, intento){
         intento.ganancia, 
         intento.ganancia * apuesta
     )
-    var resultadoWin = intento.ganancia;
-    if(resultadoWin != 0){
-        console.log('GANASTE!')
+
+    var resultadoWin = intento.ganancia;    
+    var gananciaTotal = intento.ganancia * apuesta;
+
+    var letras = intento.resultado.split("");
+    var letra1 = letras[0]; 
+    var letra2 = letras[1];
+
+    if(maquina == 'maquinaA'){
+        const letraA1 = document.querySelector("#LetraM1-A");
+        letraA1.innerHTML = `${letra1}`
+        movLetrasMA_2(letra2,resultadoWin, maquina)
+    }else{
+        const letraA1 = document.querySelector("#LetraM2-A");
+        letraA1.innerHTML = `${letra1}`
+        movLetrasMB_2(letra2,resultadoWin, maquina)
     }
+    
+    /*
+    if(resultadoWin != 0){
+        win = true;
+        if(maquina == 'maquinaA'){
+            const msjWin = document.querySelector("#mensajes1");
+            msjWin.innerHTML = '¡GANASTE!'
+        }else{
+            const msjWin = document.querySelector("#mensajes2");
+            msjWin.innerHTML = '¡GANASTE!'
+        }
+    }else{
+        win = false;
+        if(maquina == 'maquinaA'){
+            const msjWin = document.querySelector("#mensajes1");
+            msjWin.innerHTML = '-'
+        }else{
+            const msjWin = document.querySelector("#mensajes2");
+            msjWin.innerHTML = '-'
+        }
+    }
+*/
+    if(win == false){
+        perderApuesta(apuesta);
+    }else{
+        ganarApuesta(apuesta, gananciaTotal);
+    }
+
 }
+
 //JUEGO - INICIO ===============================
 var distribuciones = getDistributions()
 console.log(distribuciones)
@@ -85,7 +130,7 @@ var maquinas = {
     maquinaA: distribuciones[0],
     maquinaB: distribuciones[1]
 }
-
+/*
 //JUGAR ========================================
 //INTENTO 1
 //PRESIONAR EL BOTON DE UNA MAQUINA
@@ -126,7 +171,7 @@ var maquina = 'maquinaA'
 var apuesta = 10
 var intento = apostarYJugar(maquinas[maquina])
 imprimirIntento(i, maquina, intento)
-
+*/
 
 //AQUI TERMINA EL CÓDIGO DEL PROFE
 
@@ -147,7 +192,7 @@ const asignarNombreAnimal = () =>{
     const inputNombre = document.querySelector("#nombreInicio");
     inputNombre.setAttribute("value", `${nombre}`)
 }
-
+/*
 const main = () =>{
     asignarNombreAnimal();
     startMonedas();
@@ -172,15 +217,25 @@ const main = () =>{
 
     document.getElementById("ingresarNombreInicio").addEventListener("click",butIngresarNombreInicialOnClick);
     document.getElementById("ingresarNombreCambiado").addEventListener("click",butIngresarNombreCambiadoOnClick);
-}
+}*/
 
 const startMonedas = () =>{
     monedas = 200;
-    setMonedas()
+    setMonedas(monedas)
 } 
 
-const setMonedas = () => {
-    document.getElementById("monedas").innerText = monedas;
+const perderApuesta = (apuesta) =>{
+    monedas = monedas - apuesta;
+    setMonedas(monedas)
+}
+
+const ganarApuesta = (apuesta, ganancia) =>{
+    monedas = (monedas-apuesta) + ganancia;
+    setMonedas(monedas)
+}
+
+const setMonedas = (cant) => {
+    document.getElementById("monedas").innerText = cant;
 }
 
 const setApuestas10 = () => {
@@ -265,4 +320,179 @@ const butIngresarNombreCambiadoOnClick=()=>{
     nombre=document.getElementById("nombreCambiado").value;
     document.getElementById("nombre").innerText=nombre;
 }
+//EL usuario ingresa por primera vez
+
+const ApostarOnClickMaquinaA = () =>{
+    animToggleA=true;
+    animacionMA()
+    movLetrasMA_1()
+}
+document.getElementById("btAPOSTAR1").addEventListener("click", ApostarOnClickMaquinaA);
+
+const ApostarOnClickMaquinaB = () =>{
+    animToggleB=true;
+    animacionMB()
+    movLetrasMB_1()
+}
+document.getElementById("btAPOSTAR2").addEventListener("click", ApostarOnClickMaquinaB);
+
+
+const movLetrasMA_1 = () =>{
+    var cont=0;
+    const letraRandom = () =>{
+        var letra1 = ['J', 'Q', 'K', 'A'];
+        var rand = Math.floor(Math.random() * 4);
+        var rand2 = Math.floor(Math.random() * 4);
+        
+        document.querySelector("#LetraM1-A").innerHTML = letra1[rand];
+        document.querySelector("#LetraM1-B").innerHTML = letra1[rand2];
+        cont++;
+        //console.log(letra[rand])
+    
+        if(cont>5){
+            clearInterval(repetir)
+            var maquina = 'maquinaA'
+            var displayApuesta = document.getElementById("apuesta1")
+            var apuesta = parseInt(displayApuesta.innerHTML)
+            var intento = apostarYJugar(maquinas[maquina])
+            imprimirIntento(1, maquina, intento,apuesta)
+        }
+    }
+    
+    letraRandom()
+    var repetir = setInterval(letraRandom,250);
+}
+
+const movLetrasMB_1 = () =>{
+    var cont=0;
+    const letraRandom = () =>{
+        var letra1 = ['J', 'Q', 'K', 'A'];
+        var rand = Math.floor(Math.random() * 4);
+        var rand2 = Math.floor(Math.random() * 4);
+        
+        document.querySelector("#LetraM2-A").innerHTML = letra1[rand];
+        document.querySelector("#LetraM2-B").innerHTML = letra1[rand2];
+        cont++;
+        //console.log(letra[rand])
+    
+        if(cont>5){
+            clearInterval(repetir)
+            var maquina = 'maquinaB'
+            var displayApuesta = document.getElementById("apuesta2")
+            var apuesta = parseInt(displayApuesta.innerHTML)
+            var intento = apostarYJugar(maquinas[maquina])
+            imprimirIntento(1, maquina, intento,apuesta)
+        }
+    }
+    
+    letraRandom()
+    var repetir = setInterval(letraRandom,250);
+}
+
+const movLetrasMA_2 = (letra, result, maq) =>{
+    var cont=0;
+    const letraRandom2 = () =>{
+        var letra1 = ['J', 'Q', 'K', 'A'];
+        var rand = Math.floor(Math.random() * 4);
+        
+        document.querySelector("#LetraM1-B").innerHTML = letra1[rand];
+        cont++;
+    
+        if(cont>2){
+            clearInterval(repetir)
+            const letraA2 = document.querySelector("#LetraM1-B");
+            letraA2.innerHTML = `${letra}`
+           
+            mostrarResultado(result,maq)
+        }
+    }
+    
+    letraRandom2()
+    var repetir = setInterval(letraRandom2,250);
+}
+
+const movLetrasMB_2 = (letra,result,maq) =>{
+    var cont=0;
+    const letraRandom2 = () =>{
+        var letra1 = ['J', 'Q', 'K', 'A'];
+        var rand = Math.floor(Math.random() * 4);
+        
+        document.querySelector("#LetraM2-B").innerHTML = letra1[rand];
+        cont++;
+    
+        if(cont>2){
+            clearInterval(repetir)
+            const letraA2 = document.querySelector("#LetraM2-B");
+            letraA2.innerHTML = `${letra}`
+
+            mostrarResultado(result,maq)
+        }
+    }
+    
+    letraRandom2()
+    var repetir = setInterval(letraRandom2,250);
+}
+
+const mostrarResultado = (resultWin, maq) =>{
+    if(resultWin != 0){
+        win = true;
+        if(maq == 'maquinaA'){
+            animToggleA=false;
+            animacionMA();
+            const msjWin = document.querySelector("#mensajes1");
+            msjWin.innerHTML = '¡GANASTE!'
+        }else{
+            animToggleB=false;
+            animacionMB();
+            const msjWin = document.querySelector("#mensajes2");
+            msjWin.innerHTML = '¡GANASTE!'
+        }
+    }else{
+        win = false;
+        if(maq == 'maquinaA'){
+            animToggleA=false;
+            animacionMA();
+            const msjWin = document.querySelector("#mensajes1");
+            msjWin.innerHTML = '-'
+        }else{
+            animToggleB=false;
+            animacionMB();
+            const msjWin = document.querySelector("#mensajes2");
+            msjWin.innerHTML = '-'
+        }
+    }
+}
+    
+const animacionMA = () =>{
+    const img = document.querySelector("#laVeridica")
+    if(animToggleA == true){
+        img.setAttribute("src",'media/Tragamonedas1-2.png')
+    }else{
+        img.setAttribute("src",'media/Tragamonedas1.png')
+    }
+}
+
+const animacionMB = () =>{
+    const img = document.querySelector("#laSuertuda")
+    if(animToggleB == true){
+        img.setAttribute("src",'media/Tragamonedas2-2.png')
+    }else{
+        img.setAttribute("src",'media/Tragamonedas2.png')
+    }
+}
+
+const main = () =>{
+    asignarNombreAnimal();
+    startMonedas();
+    //Mostrar la ventana bienvenida una vez
+    localStorage.setItem("primera vez",primeraVez);
+    const divBienvenida=document.querySelector("#bienvenida");
+    modalBienvenida=new bootstrap.Modal(divBienvenida);
+    if(primeraVez==true){
+        modalBienvenida.toggle();
+        primeraVez=false;
+        localStorage.setItem("primera vez",primeraVez);
+    }
+}
+
 window.addEventListener("load",main);
