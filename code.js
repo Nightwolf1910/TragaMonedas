@@ -192,32 +192,6 @@ const asignarNombreAnimal = () =>{
     const inputNombre = document.querySelector("#nombreInicio");
     inputNombre.setAttribute("value", `${nombre}`)
 }
-/*
-const main = () =>{
-    asignarNombreAnimal();
-    startMonedas();
-    //Mostrar la ventana bienvenida una vez
-    localStorage.setItem("primera vez",primeraVez);
-    const divBienvenida=document.querySelector("#bienvenida");
-    modalBienvenida=new bootstrap.Modal(divBienvenida);
-    if(primeraVez==true){
-        modalBienvenida.toggle();
-        primeraVez=false;
-        localStorage.setItem("primera vez",primeraVez);
-    }
-    const divModalRanking=document.querySelector("#modalRanking");
-    modalCrearRanking=new bootstrap.Modal(divModalRanking);
-    const butAbrirRanking=document.querySelector("#ranking");
-    butAbrirRanking.addEventListener("click",butAbrirRankingOnClick);
-
-    const divModalCambiarNombre=document.querySelector("#modalCambiarNombre");
-    modalCambiarNombre=new bootstrap.Modal(divModalCambiarNombre);
-    const labelNombre=document.querySelector("#nombre");
-    labelNombre.addEventListener("click",butCambiarNombreOnClick);
-
-    document.getElementById("ingresarNombreInicio").addEventListener("click",butIngresarNombreInicialOnClick);
-    document.getElementById("ingresarNombreCambiado").addEventListener("click",butIngresarNombreCambiadoOnClick);
-}*/
 
 const startMonedas = () =>{
     monedas = 200;
@@ -493,6 +467,18 @@ const main = () =>{
         primeraVez=false;
         localStorage.setItem("primera vez",primeraVez);
     }
+    const divModalRanking=document.querySelector("#modalRanking");
+    modalCrearRanking=new bootstrap.Modal(divModalRanking);
+    const butAbrirRanking=document.querySelector("#ranking");
+    butAbrirRanking.addEventListener("click",butAbrirRankingOnClick);
+
+    const divModalCambiarNombre=document.querySelector("#modalCambiarNombre");
+    modalCambiarNombre=new bootstrap.Modal(divModalCambiarNombre);
+    const labelNombre=document.querySelector("#nombre");
+    labelNombre.addEventListener("click",butCambiarNombreOnClick);
+
+    document.getElementById("ingresarNombreInicio").addEventListener("click",butIngresarNombreInicialOnClick);
+    document.getElementById("ingresarNombreCambiado").addEventListener("click",butIngresarNombreCambiadoOnClick);
 }
 
 window.addEventListener("load",main);
