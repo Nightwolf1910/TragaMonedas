@@ -691,20 +691,22 @@ window.addEventListener("load",main);
 
 // Audio mute con boton. Fase Beta(v.02)
 
-var btnmusica = document.getElementById('musica')
-var audio = document.getElementsByTagName('audio')[0];
-
-const MusicaOnClick = () => {
-
-    btnmusica.addEventListener("click", function(){
-        if (!sound) {
-            audio.play();
-            this.innerHTML = "Pause";
-            sound = true;
-        } else {
-            audio.pause();
-            this.innerHTML = "Play";
-            sound = false;
+function iniciar() { 
+    var btnmusica=document.getElementById('musica'); 
+    btnmusica.addEventListener('click', presionar, false); 
+ } 
+ function presionar() { 
+    var audio=document.getElementById('lobby-audio'); 
+        if(!audio.paused && !audio.ended)   { 
+           audio.pause(); 
+           btnmusica.value='Reproducir';   
         } 
-    });
-}
+        else 
+        { 
+           audio.play(); 
+           btnmusica.value='Pausa';   
+        } 
+    
+ } 
+ window.addEventListener('load', iniciar, false); 
+
