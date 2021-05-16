@@ -689,13 +689,13 @@ const main =async () =>{
 
 window.addEventListener("load",main);
 
-// Audio mute con boton. Fase Beta(v.02)
+// Audio mute con boton para lobby. Fase Beta(v.02)
 
-function iniciar() { 
+function btnlobby() { 
     var btnmusica=document.getElementById('musica'); 
-    btnmusica.addEventListener('click', presionar, false); 
+    btnmusica.addEventListener('click', audiolobby, false); 
  } 
- function presionar() { 
+ function audiolobby() { 
     var audio=document.getElementById('lobby-audio'); 
         if(!audio.paused && !audio.ended)   { 
            audio.pause(); 
@@ -708,5 +708,21 @@ function iniciar() {
         } 
     
  } 
- window.addEventListener('load', iniciar, false); 
+ window.addEventListener('load', btnlobby, false); 
+
+ // Audio al girar 
+
+ function btngirar() { 
+    var btnApostar1=document.getElementById('btAPOSTAR1'); 
+    btnApostar1.addEventListener('click', audiospin, false); 
+    var btnApostar2=document.getElementById('btAPOSTAR2'); 
+    btnApostar2.addEventListener('click', audiospin, false)
+ } 
+ function audiospin() { 
+    var audiogirar=document.getElementById('audio-girar'); 
+    audiogirar.play(); 
+ } 
+ window.addEventListener('load', btngirar, false); 
+
+ // 
 
