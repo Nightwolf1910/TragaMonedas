@@ -460,38 +460,47 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
     if(resultWin != 0){
         win = true;
         ganarApuesta(apuest, ganTotal);
+
         if(maq == 'maquinaA'){
             animToggleA=false;
             animacionMA();
             const msjWin = document.querySelector("#mensajes1");
             msjWin.innerHTML = '¡GANASTE!'
+
+            const msjGanancia = document.querySelector("#gananciaM1");
+            msjGanancia.innerHTML = `${ganTotal}`
         }else{
             animToggleB=false;
             animacionMB();
             const msjWin = document.querySelector("#mensajes2");
             msjWin.innerHTML = '¡GANASTE!'
+
+            const msjGanancia = document.querySelector("#gananciaM2");
+            msjGanancia.innerHTML = `${ganTotal}`
         }
     }else{
         win = false;
         perderApuesta(apuest);
+
         if(maq == 'maquinaA'){
             animToggleA=false;
             animacionMA();
             const msjWin = document.querySelector("#mensajes1");
             msjWin.innerHTML = '-'
+
+            const msjGanancia = document.querySelector("#gananciaM1");
+            msjGanancia.innerHTML = '0'
         }else{
             animToggleB=false;
             animacionMB();
             const msjWin = document.querySelector("#mensajes2");
             msjWin.innerHTML = '-'
+
+            const msjGanancia = document.querySelector("#gananciaM2");
+            msjGanancia.innerHTML = '0'
         }
     }
-    /*
-    if(win == false){
-        perderApuesta(apuest);
-    }else{
-        ganarApuesta(apuest, ganTotal);
-    }*/
+    
 }
     
 const animacionMA = () =>{
