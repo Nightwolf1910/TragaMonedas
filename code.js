@@ -391,7 +391,7 @@ const ApostarOnClickMaquinaA = async () =>{
     animacionMA()
     movLetrasMA_1()
     realizarApuesta(apuesta);
-    
+
     document.getElementById("btAPOSTAR1").disabled=true;
     document.getElementById("btR1").disabled=true;
     document.getElementById("btL1").disabled=true;
@@ -666,6 +666,11 @@ const cargarTablaRanking=()=>{
         n++;
     }
 }
+
+const seleccionarTexto = () =>{
+    document.querySelector("#nombreInicio").select();
+}
+
 const main =async () =>{
     asignarNombreAnimal();
     startMonedas();
