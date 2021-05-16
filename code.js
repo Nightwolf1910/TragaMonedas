@@ -292,6 +292,15 @@ const butAbrirRankingOnClick=()=>{
 const butCambiarNombreOnClick=()=>{
     modalCambiarNombre.toggle();
 }
+
+const butAbrirAcercaDeOnClick=()=>{
+    modalAcercaDe.toggle();
+}
+
+const butAbrirInstruccionesOnClick=()=>{
+    modalInstrucciones.toggle();
+}
+
 const butIngresarNombreInicialOnClick=()=>{
     nombre=document.getElementById("nombreInicio").value;
     document.getElementById("nombre").innerText=nombre;
@@ -530,8 +539,42 @@ const main = () =>{
     const labelNombre=document.querySelector("#nombre");
     labelNombre.addEventListener("click",butCambiarNombreOnClick);
 
+    const divModalAcercaDe=document.querySelector("#modalAcercaDe");
+    modalAcercaDe=new bootstrap.Modal(divModalAcercaDe);
+    const butAcercaDe=document.querySelector("#acercaDe");
+    butAcercaDe.addEventListener("click",butAbrirAcercaDeOnClick);
+
+    const divModalInstrucciones=document.querySelector("#modalInstrucciones");
+    modalInstrucciones=new bootstrap.Modal(divModalInstrucciones);
+    const butInstrucciones=document.querySelector("#instrucciones");
+    butInstrucciones.addEventListener("click",butAbrirInstruccionesOnClick);
+
+
+
     document.getElementById("ingresarNombreInicio").addEventListener("click",butIngresarNombreInicialOnClick);
     document.getElementById("ingresarNombreCambiado").addEventListener("click",butIngresarNombreCambiadoOnClick);
+    document.getElementById("close").addEventListener("click",butAbrirAcercaDeOnClick);
+    document.getElementById("close").addEventListener("click",butAbrirInstruccionesOnClick);
 }
 
 window.addEventListener("load",main);
+
+// Audio mute con boton. Fase Beta(v.02)
+
+var btnmusica = document.getElementById('musica')
+var audio = document.getElementsByTagName('audio')[0];
+
+const MusicaOnClick = () => {
+
+    btnmusica.addEventListener("click", function(){
+        if (!sound) {
+            audio.play();
+            this.innerHTML = "Pause";
+            sound = true;
+        } else {
+            audio.pause();
+            this.innerHTML = "Play";
+            sound = false;
+        } 
+    });
+}

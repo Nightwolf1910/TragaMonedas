@@ -11,6 +11,11 @@ body{
     background-position: center;
 }
 
+.container{
+    width: 100%;
+    overflow: hidden;
+}
+
 .maquina{
     margin:10px;
     text-align:center;
