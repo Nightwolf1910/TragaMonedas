@@ -395,6 +395,11 @@ const ApostarOnClickMaquinaA = async () =>{
     document.getElementById("btAPOSTAR1").disabled=true;
     document.getElementById("btR1").disabled=true;
     document.getElementById("btL1").disabled=true;
+    if(document.getElementById("apuesta2").innerText>monedas){
+        document.getElementById("btAPOSTAR2").disabled=true;
+        document.getElementById("btR2").disabled=true;
+        document.getElementById("btL2").disabled=false;
+    }
     await sleep(2000);
     if(document.getElementById("apuesta1").innerText>monedas){
         document.getElementById("btAPOSTAR1").disabled=true;
@@ -404,6 +409,11 @@ const ApostarOnClickMaquinaA = async () =>{
         document.getElementById("btAPOSTAR1").disabled=false;
         document.getElementById("btR1").disabled=false;
         document.getElementById("btL1").disabled=false;
+    }
+    if(document.getElementById("apuesta2").innerText<monedas){
+        document.getElementById("btAPOSTAR2").disabled=false;
+        document.getElementById("btR2").disabled=false;
+        document.getElementById("btL2").disabled=false;
     }
     if(monedas==0){
         document.getElementById("btAPOSTAR1").disabled=true;
@@ -426,6 +436,11 @@ const ApostarOnClickMaquinaB = async () =>{
     document.getElementById("btAPOSTAR2").disabled=true;
     document.getElementById("btR2").disabled=true;
     document.getElementById("btL2").disabled=true;
+    if(document.getElementById("apuesta1").innerText>monedas){
+        document.getElementById("btAPOSTAR1").disabled=true;
+        document.getElementById("btR1").disabled=true;
+        document.getElementById("btL1").disabled=false;
+    }
     await sleep(2000);
     if(document.getElementById("apuesta2").innerText>monedas){
         document.getElementById("btAPOSTAR2").disabled=true;
@@ -435,6 +450,11 @@ const ApostarOnClickMaquinaB = async () =>{
         document.getElementById("btAPOSTAR2").disabled=false;
         document.getElementById("btR2").disabled=false;
         document.getElementById("btL2").disabled=false;
+    }
+    if(document.getElementById("apuesta1").innerText<monedas){
+        document.getElementById("btAPOSTAR1").disabled=false;
+        document.getElementById("btR1").disabled=false;
+        document.getElementById("btL1").disabled=false;
     }
     if(monedas==0){
         document.getElementById("btAPOSTAR1").disabled=true;
