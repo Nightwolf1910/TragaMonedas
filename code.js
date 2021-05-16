@@ -183,7 +183,81 @@ var nomAnimalesAnonimos = [
 ]
 var primeraVez=true;
 var modalBienvenida;
-var nombre="";
+var usuarios=[
+    {
+        nombre:"",
+        monedas:200,
+        numeroDeApuestas:0,
+        ganancia:0
+    },
+    {
+        nombre:"Billy",
+        monedas:500,
+        numeroDeApuestas:8,
+        ganancia:160
+    },
+    {
+        nombre:"Mario",
+        monedas:350,
+        numeroDeApuestas:6,
+        ganancia:50
+    },
+    {
+        nombre:"Jose",
+        monedas:600,
+        numeroDeApuestas:15,
+        ganancia:250
+    },
+    {
+        nombre:"Alberto",
+        monedas:400,
+        numeroDeApuestas:20,
+        ganancia:200
+    },
+    {
+        nombre:"Luis",
+        monedas:450,
+        numeroDeApuestas:10,
+        ganancia:50
+    },
+    {
+        nombre:"Angel",
+        monedas:210,
+        numeroDeApuestas:9,
+        ganancia:100
+    },
+    {
+        nombre:"Javier",
+        monedas:250,
+        numeroDeApuestas:3,
+        ganancia:30
+    },
+    {
+        nombre:"Olenka",
+        monedas:300,
+        numeroDeApuestas:10,
+        ganancia:60
+    },
+    {
+        nombre:"Fabricio",
+        monedas:450,
+        numeroDeApuestas:13,
+        ganancia:200
+    },
+    {
+        nombre:"Carlos",
+        monedas:310,
+        numeroDeApuestas:6,
+        ganancia:40
+    },
+    {
+        nombre:"Renato",
+        monedas:360,
+        numeroDeApuestas:5,
+        ganancia:50
+    },
+]
+
 
 const asignarNombreAnimal = () =>{
     posAleatoria = Math.floor(Math.random() * 9);
@@ -293,12 +367,12 @@ const butCambiarNombreOnClick=()=>{
     modalCambiarNombre.toggle();
 }
 const butIngresarNombreInicialOnClick=()=>{
-    nombre=document.getElementById("nombreInicio").value;
-    document.getElementById("nombre").innerText=nombre;
+    usuarios[0]['nombre']=document.getElementById("nombreInicio").value;
+    document.getElementById("nombre").innerText=usuarios[0]['nombre'];
 }
 const butIngresarNombreCambiadoOnClick=()=>{
-    nombre=document.getElementById("nombreCambiado").value;
-    document.getElementById("nombre").innerText=nombre; 
+    usuarios[0]['nombre']=document.getElementById("nombreCambiado").value;
+    document.getElementById("nombre").innerText=usuarios[0]['nombre']; 
     setApuestas10();
 }
 
@@ -506,8 +580,45 @@ const animacionMB = () =>{
         img.setAttribute("src",'media/Tragamonedas2.png')
     }
 }
+const ordenarUsuarios=(usuarios)=>{
+    usuarios.sort(function(a, b) {
+        var textA = a.ganancia;
+        var textB = b.ganancia;
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    }).reverse();
+}
 
-const main = () =>{
+
+const crearFila=(usuarios,n)=>{
+    const tr=document.createElement("tr");
+    const tdId=document.createElement("td");
+    const tdNombre=document.createElement("td");
+    const tdGanancia=document.createElement("td");
+    const tdNumeroDeApuestas=document.createElement("td");
+    const tdGananciaPromedio=document.createElement("td");
+    tdId.innerText=n;
+    tdNombre.innerText=usuarios.nombre;
+    tdGanancia.innerText=usuarios.ganancia;
+    tdNumeroDeApuestas.innerText=usuarios.numeroDeApuestas;
+    tdGananciaPromedio.innerText=parseFloat(usuarios.ganancia/usuarios.numeroDeApuestas).toFixed(2);
+    tr.appendChild(tdId);
+    tr.appendChild(tdNombre);
+    tr.appendChild(tdGanancia);
+    tr.appendChild(tdNumeroDeApuestas);
+    tr.appendChild(tdGananciaPromedio);
+    return tr;
+}
+const cargarTablaRanking=()=>{
+    var n=1;
+    const tbody=document.querySelector("#tablaRanking");
+    tbody.innerHTML="";
+    for (let user of usuarios){
+        const tr= crearFila(user,n);
+        tbody.appendChild(tr);
+        n++;
+    }
+}
+const main =async () =>{
     asignarNombreAnimal();
     startMonedas();
     setApuestas10();
@@ -530,8 +641,14 @@ const main = () =>{
     const labelNombre=document.querySelector("#nombre");
     labelNombre.addEventListener("click",butCambiarNombreOnClick);
 
+    document.getElementById("monedas").innerText=usuarios[0]['monedas'];
+    document.getElementById("ganancia").innerText=usuarios[0]['ganancia']; 
+    
     document.getElementById("ingresarNombreInicio").addEventListener("click",butIngresarNombreInicialOnClick);
     document.getElementById("ingresarNombreCambiado").addEventListener("click",butIngresarNombreCambiadoOnClick);
+    ordenarUsuarios(usuarios);
+    cargarTablaRanking();
+    console.log(usuarios);
 }
 
 window.addEventListener("load",main);
