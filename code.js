@@ -676,6 +676,7 @@ const main =async () =>{
 
     document.getElementById("monedas").innerText=usuarios[0]['monedas'];
     document.getElementById("ganancia").innerText=usuarios[0]['ganancia'];
+    
     ordenarUsuarios(usuarios);
     cargarTablaRanking();
     console.log(usuarios);
