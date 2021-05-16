@@ -26,10 +26,6 @@ body{
     max-height:max-content;
     overflow: hidden;
 }
-/*
-#apuesta1, #apuesta2{
-    max-height: 10px;
-}
 
 .maquina img{
     width:100%;
