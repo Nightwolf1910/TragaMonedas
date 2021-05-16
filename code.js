@@ -268,13 +268,13 @@ const startMonedas = () =>{
     setMonedas(monedas)
 } 
 
-const perderApuesta = (apuesta) =>{
+const realizarApuesta = (apuesta) =>{
     monedas = monedas - apuesta;
     setMonedas(monedas)
 }
 
-const ganarApuesta = (apuesta, ganancia) =>{
-    monedas = (monedas-apuesta) + ganancia;
+const ganarApuesta = (ganancia) =>{
+    monedas = monedas + ganancia;
     setMonedas(monedas)
 }
 
@@ -386,9 +386,12 @@ function sleep(ms) {
   }
 
 const ApostarOnClickMaquinaA = async () =>{
+    var apuesta = parseInt(document.getElementById("apuesta1").innerHTML);
     animToggleA=true;
     animacionMA()
     movLetrasMA_1()
+    realizarApuesta(apuesta);
+    
     document.getElementById("btAPOSTAR1").disabled=true;
     document.getElementById("btR1").disabled=true;
     document.getElementById("btL1").disabled=true;
@@ -414,9 +417,12 @@ const ApostarOnClickMaquinaA = async () =>{
 document.getElementById("btAPOSTAR1").addEventListener("click", ApostarOnClickMaquinaA);
 
 const ApostarOnClickMaquinaB = async () =>{
+    var apuesta = parseInt(document.getElementById("apuesta2").innerHTML);
     animToggleB=true;
     animacionMB()
     movLetrasMB_1()
+    realizarApuesta(apuesta);
+
     document.getElementById("btAPOSTAR2").disabled=true;
     document.getElementById("btR2").disabled=true;
     document.getElementById("btL2").disabled=true;
@@ -542,7 +548,7 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
     
     if(resultWin != 0){
         win = true;
-        ganarApuesta(apuest, ganTotal);
+        ganarApuesta(ganTotal);
 
         if(maq == 'maquinaA'){
             animToggleA=false;
@@ -563,7 +569,6 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
         }
     }else{
         win = false;
-        perderApuesta(apuest);
 
         if(maq == 'maquinaA'){
             animToggleA=false;
