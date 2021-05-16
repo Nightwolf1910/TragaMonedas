@@ -86,11 +86,11 @@ function imprimirIntento(i, maquina, intento, apuesta){
     if(maquina == 'maquinaA'){
         const letraA1 = document.querySelector("#LetraM1-A");
         letraA1.innerHTML = `${letra1}`
-        movLetrasMA_2(letra2,resultadoWin, maquina)
+        movLetrasMA_2(letra2,resultadoWin, maquina,apuesta,gananciaTotal)
     }else{
         const letraA1 = document.querySelector("#LetraM2-A");
         letraA1.innerHTML = `${letra1}`
-        movLetrasMB_2(letra2,resultadoWin, maquina)
+        movLetrasMB_2(letra2,resultadoWin, maquina,apuesta,gananciaTotal)
     }
     
     /*
@@ -114,11 +114,7 @@ function imprimirIntento(i, maquina, intento, apuesta){
         }
     }
 */
-    if(win == false){
-        perderApuesta(apuesta);
-    }else{
-        ganarApuesta(apuesta, gananciaTotal);
-    }
+    
 
 }
 
@@ -415,7 +411,7 @@ const movLetrasMB_1 = () =>{
     var repetir = setInterval(letraRandom,250);
 }
 
-const movLetrasMA_2 = (letra, result, maq) =>{
+const movLetrasMA_2 = (letra, result, maq,apuest,ganTotal) =>{
     var cont=0;
     const letraRandom2 = () =>{
         var letra1 = ['J', 'Q', 'K', 'A'];
@@ -429,7 +425,7 @@ const movLetrasMA_2 = (letra, result, maq) =>{
             const letraA2 = document.querySelector("#LetraM1-B");
             letraA2.innerHTML = `${letra}`
            
-            mostrarResultado(result,maq)
+            mostrarResultado(result,maq,apuest,ganTotal)
         }
     }
     
@@ -437,7 +433,7 @@ const movLetrasMA_2 = (letra, result, maq) =>{
     var repetir = setInterval(letraRandom2,250);
 }
 
-const movLetrasMB_2 = (letra,result,maq) =>{
+const movLetrasMB_2 = (letra,result,maq,apuest,ganTotal) =>{
     var cont=0;
     const letraRandom2 = () =>{
         var letra1 = ['J', 'Q', 'K', 'A'];
@@ -451,7 +447,7 @@ const movLetrasMB_2 = (letra,result,maq) =>{
             const letraA2 = document.querySelector("#LetraM2-B");
             letraA2.innerHTML = `${letra}`
 
-            mostrarResultado(result,maq)
+            mostrarResultado(result,maq,apuest,ganTotal)
         }
     }
     
@@ -459,9 +455,11 @@ const movLetrasMB_2 = (letra,result,maq) =>{
     var repetir = setInterval(letraRandom2,250);
 }
 
-const mostrarResultado = (resultWin, maq) =>{
+const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
+    
     if(resultWin != 0){
         win = true;
+        ganarApuesta(apuest, ganTotal);
         if(maq == 'maquinaA'){
             animToggleA=false;
             animacionMA();
@@ -475,6 +473,7 @@ const mostrarResultado = (resultWin, maq) =>{
         }
     }else{
         win = false;
+        perderApuesta(apuest);
         if(maq == 'maquinaA'){
             animToggleA=false;
             animacionMA();
@@ -487,6 +486,12 @@ const mostrarResultado = (resultWin, maq) =>{
             msjWin.innerHTML = '-'
         }
     }
+    /*
+    if(win == false){
+        perderApuesta(apuest);
+    }else{
+        ganarApuesta(apuest, ganTotal);
+    }*/
 }
     
 const animacionMA = () =>{
