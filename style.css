@@ -11,6 +11,11 @@ body{
     background-position: center;
 }
 
+.container{
+    width: 100%;
+    overflow: hidden;
+}
+
 .maquina{
     margin:10px;
     text-align:center;
@@ -46,7 +51,7 @@ body{
 .botones_apuesta{
     position: absolute;
     top:0;
-    margin-left: 31%;
+    margin-left: 30%;
 }
 
 #box{
@@ -132,8 +137,11 @@ body{
 
 .letras-box{
     position: absolute;
+    width:34%;
     top: 40%;
-    right:37.5%;
+    right:34%;
+    margin-left:0px;
+    margin-right:0px;
 }
 
 .letra{
@@ -148,7 +156,7 @@ body{
 }
 
 #LetraM2-A, #LetraM1-A{
-    margin-right:0px;
+    margin-right:40%;
 }
 #LetraM2-B, #LetraM1-B{
     margin-left:0px;
