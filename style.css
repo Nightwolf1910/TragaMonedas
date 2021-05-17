@@ -222,7 +222,7 @@ body{
 
 /* IPAD */
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width:1024px) {
     body div{
         font-size: 15px;
     }
@@ -234,8 +234,6 @@ body{
     .maquina div{
         min-height: 10px;
         min-width: 10px;
-        resize: both;
-        overflow: auto;
         max-height: fit-content;
         width: auto;
     }
@@ -312,7 +310,7 @@ body{
     }
 }
 
-@media (orientation:portrait){
+@media (min-width: 768px) and (max-width: 768px) and (orientation:portrait){
     body div{
         font-size: 15px;
         overflow:hidden;
@@ -348,8 +346,6 @@ body{
     .maquina div{
         min-height: 10px;
         min-width: 10px;
-        resize: both;
-        overflow: auto;
         max-height: fit-content;
         width: auto;
     }
@@ -427,6 +423,172 @@ body{
         height: 30px;
     }
 }
+
+
+/* GALAXY S5*/
+@media (max-width: 640px) and (min-width:640px) {
+    body div{
+        font-size: 10px;
+    }
+
+    #box{
+        margin-left:2px!important;
+        margin-right:2px!important;
+        margin-top:2px!important;
+    }
+    .icono{
+        height:auto;
+        max-width: 30px;
+        width:100%;
+    }
+
+    #d_nombre div,#d_monedas div,#d_ganancias div{
+        font-size: 12px;
+        padding:0px;
+        overflow:visible
+    }
+    #d_nombre,#d_monedas,#d_ganancias{
+        padding:5px;
+    }
+    #nombre,#monedas,#ganancia{
+        text-align: end;
+        padding-right:10px;
+    }
+
+    .botones_apuesta{
+       margin-left: 7px!important;
+       margin-top: 70%;
+    }
+    .maquina div{
+        min-height: 10px;
+        min-width: 10px;
+        max-height: fit-content;
+        width: auto;
+    }
+    #mensajes1,#mensajes2{
+        top: 22%;
+        font-size:8px;
+        right: 39%;
+        width:75px;
+    }
+    .letras-box{
+        position: absolute;
+        width:30%;
+        top: 40%;
+        right:41.5%;
+        margin-left:0px;
+        margin-right:0px;
+    }
+        
+    #LetraM2-A, #LetraM1-A, #LetraM2-B, #LetraM1-B{
+        overflow: hidden;
+        width: 5px;
+        font-size: 6px;
+    }
+
+    #LetraM2-A, #LetraM1-A{
+        margin-right:15px;
+        color: red;
+        font-weight: bold;
+        background-color: white;
+    }
+    #LetraM2-B, #LetraM1-B{
+        margin-left:0%;
+        color: red;
+        font-weight: bold;
+        background-color: white;
+    }
+    .botones_apuesta{
+        position: absolute;
+        top:0;
+        height:500px;
+        margin-top:70%;
+        margin-left:7%;
+        overflow: hidden;
+    }
+    .botones_apuesta div{
+        font-size:12px;
+        max-height:20px;
+    }
+
+    #bienvenida{
+        height:350px;
+        transform: translate(0.5,0.5);
+        overflow:hidden;
+    }
+    #bienvenida div{
+        padding-top:5px;
+        padding-bottom:5px;
+    }
+
+    #imgBienvenida{
+        height:100px;
+    }
+
+    .botones_apuesta btn{
+        font-size: 5px;
+        padding-top: 0px;
+        overflow: hidden;
+    }
+
+    #SubirBajarApuesta1,#SubirBajarApuesta2{
+        margin-left:0px!important;
+        margin-right:0px!important;
+    }
+
+    #SubirBajarApuesta1 .display_box,#SubirBajarApuesta2 .display_box{
+        width:50px;
+    }
+
+
+    #SubirBajarApuesta1 div,#SubirBajarApuesta2 div{
+        overflow:hidden;
+        padding-top: -20px;
+        display: table;
+        align-content: center;
+        vertical-align: center;
+        text-align: center;
+    }
+
+    #btL1,#btL2,#btR1, #btR2{
+        position:relative;
+        height:25px;
+        font-size:15px;
+        text-align: center;
+        text-align: start;
+        bottom:10px;
+        width:auto;
+    }
+
+    #btAPOSTAR1, #btAPOSTAR2{
+        position: absolute;
+        overflow:hidden;
+        height: 20px;
+        font-size: 9px;
+        width: 70px;
+        text-align: center;
+        margin-top:3px;
+    }
+    #gananciaM1, #gananciaM2{
+        width:80px;
+        margin-left:45px;
+        margin-top: 16px;
+        font-size:10px;
+        height: 20px;
+        background: rgba(255, 255, 255);
+    }
+    #botones_info{
+        margin-top:0px!important;
+        flex:none;    
+    }
+    #botones_info button{
+        background-size:contain;
+        height:20px;
+        width:20px;
+    }
+
+}
+
 
 @media (min-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ }
 @media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */ }
