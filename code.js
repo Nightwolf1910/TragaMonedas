@@ -442,6 +442,8 @@ const ApostarOnClickMaquinaA = async () =>{
         apostar1.disabled=true;
         R1.disabled=true;
         L1.disabled=true;
+        var audiogirar=document.getElementById('audio-girar'); 
+        audiogirar.play(); 
     }else{
         funcionCobrarA();
         document.querySelector("#btAPOSTAR1").innerText="APOSTAR";
@@ -471,7 +473,8 @@ const ApostarOnClickMaquinaB = async () =>{
         apostar2.disabled=true;
         R2.disabled=true;
         L2.disabled=true;
-
+        var audiogirar=document.getElementById('audio-girar'); 
+        audiogirar.play(); 
     }else{
         funcionCobrarB()
         document.querySelector("#btAPOSTAR2").innerText="APOSTAR";
@@ -820,7 +823,7 @@ function btnlobby() {
  window.addEventListener('load', btnlobby, false); 
 
  // Audio al girar 
-
+/*
  function btngirar() { 
     var btnApostar1=document.getElementById('btAPOSTAR1'); 
     btnApostar1.addEventListener('click', audiospin, false); 
@@ -832,7 +835,7 @@ function btnlobby() {
     audiogirar.play(); 
  } 
  window.addEventListener('load', btngirar, false); 
-
+*/
  // Audio al Ganar y audio al Perder FASE BETA v0.9
 
  function audioGanaryPerder (){
