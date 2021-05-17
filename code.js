@@ -441,7 +441,7 @@ const ApostarOnClickMaquinaA = async () =>{
         R1.disabled=true;
         L1.disabled=true;
     }else{
-        funcionCobrarA()
+        funcionCobrarA();
         document.querySelector("#btAPOSTAR1").innerText=="APOSTAR";
         if(document.querySelector("#btAPOSTAR2").innerText=="APOSTAR"){
             apostar2.disabled=false;
