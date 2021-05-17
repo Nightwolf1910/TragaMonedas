@@ -268,13 +268,13 @@ const startMonedas = () =>{
     setMonedas(monedas)
 } 
 
-const perderApuesta = (apuesta) =>{
+const realizarApuesta = (apuesta) =>{
     monedas = monedas - apuesta;
     setMonedas(monedas)
 }
 
-const ganarApuesta = (apuesta, ganancia) =>{
-    monedas = (monedas-apuesta) + ganancia;
+const ganarApuesta = (ganancia) =>{
+    monedas = monedas + ganancia;
     setMonedas(monedas)
 }
 
@@ -357,7 +357,10 @@ const apostarMenos2 = () => {
 }
 document.getElementById("btL2").addEventListener("click", apostarMenos2);
 const butAbrirRankingOnClick=()=>{
+    ordenarUsuarios(usuarios);
+    cargarTablaRanking();
     modalCrearRanking.toggle();
+    console.log(usuarios[0]['nombre']);
 }
 const butCambiarNombreOnClick=()=>{
     modalCambiarNombre.toggle();
@@ -386,12 +389,20 @@ function sleep(ms) {
   }
 
 const ApostarOnClickMaquinaA = async () =>{
+    var apuesta = parseInt(document.getElementById("apuesta1").innerHTML);
     animToggleA=true;
     animacionMA()
     movLetrasMA_1()
+    realizarApuesta(apuesta);
+
     document.getElementById("btAPOSTAR1").disabled=true;
     document.getElementById("btR1").disabled=true;
     document.getElementById("btL1").disabled=true;
+    if(document.getElementById("apuesta2").innerText>monedas){
+        document.getElementById("btAPOSTAR2").disabled=true;
+        document.getElementById("btR2").disabled=true;
+        document.getElementById("btL2").disabled=false;
+    }
     await sleep(2000);
     if(document.getElementById("apuesta1").innerText>monedas){
         document.getElementById("btAPOSTAR1").disabled=true;
@@ -401,6 +412,11 @@ const ApostarOnClickMaquinaA = async () =>{
         document.getElementById("btAPOSTAR1").disabled=false;
         document.getElementById("btR1").disabled=false;
         document.getElementById("btL1").disabled=false;
+    }
+    if(document.getElementById("apuesta2").innerText<monedas){
+        document.getElementById("btAPOSTAR2").disabled=false;
+        document.getElementById("btR2").disabled=false;
+        document.getElementById("btL2").disabled=false;
     }
     if(monedas==0){
         document.getElementById("btAPOSTAR1").disabled=true;
@@ -414,12 +430,20 @@ const ApostarOnClickMaquinaA = async () =>{
 document.getElementById("btAPOSTAR1").addEventListener("click", ApostarOnClickMaquinaA);
 
 const ApostarOnClickMaquinaB = async () =>{
+    var apuesta = parseInt(document.getElementById("apuesta2").innerHTML);
     animToggleB=true;
     animacionMB()
     movLetrasMB_1()
+    realizarApuesta(apuesta);
+
     document.getElementById("btAPOSTAR2").disabled=true;
     document.getElementById("btR2").disabled=true;
     document.getElementById("btL2").disabled=true;
+    if(document.getElementById("apuesta1").innerText>monedas){
+        document.getElementById("btAPOSTAR1").disabled=true;
+        document.getElementById("btR1").disabled=true;
+        document.getElementById("btL1").disabled=false;
+    }
     await sleep(2000);
     if(document.getElementById("apuesta2").innerText>monedas){
         document.getElementById("btAPOSTAR2").disabled=true;
@@ -429,6 +453,11 @@ const ApostarOnClickMaquinaB = async () =>{
         document.getElementById("btAPOSTAR2").disabled=false;
         document.getElementById("btR2").disabled=false;
         document.getElementById("btL2").disabled=false;
+    }
+    if(document.getElementById("apuesta1").innerText<monedas){
+        document.getElementById("btAPOSTAR1").disabled=false;
+        document.getElementById("btR1").disabled=false;
+        document.getElementById("btL1").disabled=false;
     }
     if(monedas==0){
         document.getElementById("btAPOSTAR1").disabled=true;
@@ -542,7 +571,7 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
     
     if(resultWin != 0){
         win = true;
-        ganarApuesta(apuest, ganTotal);
+        ganarApuesta(ganTotal);
 
         if(maq == 'maquinaA'){
             animToggleA=false;
@@ -561,9 +590,10 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
             const msjGanancia = document.querySelector("#gananciaM2");
             msjGanancia.innerHTML = `${ganTotal}`
         }
+        const cobrar=document.querySelector("#btAPOSTAR1");
+        cobrar.innerText="COBRAR";
     }else{
         win = false;
-        perderApuesta(apuest);
 
         if(maq == 'maquinaA'){
             animToggleA=false;
@@ -623,7 +653,12 @@ const crearFila=(usuarios,n)=>{
     tdNombre.innerText=usuarios.nombre;
     tdGanancia.innerText=usuarios.ganancia;
     tdNumeroDeApuestas.innerText=usuarios.numeroDeApuestas;
-    tdGananciaPromedio.innerText=parseFloat(usuarios.ganancia/usuarios.numeroDeApuestas).toFixed(2);
+    if(usuarios.numeroDeApuestas!=0){
+        tdGananciaPromedio.innerText=parseFloat(usuarios.ganancia/usuarios.numeroDeApuestas).toFixed(2);
+    }else{
+        tdGananciaPromedio.innerText=0;
+    }
+    
     tr.appendChild(tdId);
     tr.appendChild(tdNombre);
     tr.appendChild(tdGanancia);
@@ -641,6 +676,11 @@ const cargarTablaRanking=()=>{
         n++;
     }
 }
+
+const seleccionarTexto = () =>{
+    document.querySelector("#nombreInicio").select();
+}
+
 const main =async () =>{
     asignarNombreAnimal();
     startMonedas();
@@ -676,10 +716,6 @@ const main =async () =>{
 
     document.getElementById("monedas").innerText=usuarios[0]['monedas'];
     document.getElementById("ganancia").innerText=usuarios[0]['ganancia'];
-    
-    ordenarUsuarios(usuarios);
-    cargarTablaRanking();
-    console.log(usuarios);
 
     document.getElementById("ingresarNombreInicio").addEventListener("click",butIngresarNombreInicialOnClick);
     document.getElementById("ingresarNombreCambiado").addEventListener("click",butIngresarNombreCambiadoOnClick);

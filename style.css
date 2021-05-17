@@ -2,6 +2,9 @@ html, body{
     overflow: hidden;
 }
 
+
+
+
 body{
     position: relative;
     align-items: center;
@@ -27,14 +30,11 @@ body{
     overflow: hidden;
 }
 
-#apuesta1, #apuesta2{
-    max-height: 10px;
-}
-
 .maquina img{
     width:100%;
     height:auto;
 }
+
 
 /*.maquina .btn{
     position: absolute;
@@ -46,12 +46,6 @@ body{
 
 #botones_info{
     position: absolute;
-}
-
-.botones_apuesta{
-    position: absolute;
-    top:0;
-    margin-left: 30%;
 }
 
 #box{
@@ -119,15 +113,18 @@ body{
 }
 
 
-#SubirBajarApuesta1, #SubirBajarApuesta2{
-    margin-top: 250%;
+.botones_apuesta{
+    position: absolute;
+    top:0;
+    margin-top:80%;
+    margin-left:32%;
 }
 
 
 .mensajes{
     position: absolute;
     top: 24%;
-    right: 34%;
+    right: 36%;
     min-width:34%;
     
     border: solid 1px;
@@ -149,10 +146,13 @@ body{
     background-color:rgba(255, 255, 255, .5);
     border-radius: 10px;
     padding: 10%;
+    height:auto;
+    max-width: 100px;
+    width:100%;
 }
 
 #LetraM2-A, #LetraM1-A, #LetraM2-B, #LetraM1-B{
-    width: 50px;
+    width: 25%;
 }
 
 #LetraM2-A, #LetraM1-A{
@@ -162,7 +162,7 @@ body{
     background-color: white;
 }
 #LetraM2-B, #LetraM1-B{
-    margin-left:0px;
+    margin-left:0%;
     color: red;
     font-weight: bold;
     background-color: white;
@@ -170,23 +170,26 @@ body{
 
 
 .ganancia{
+    position: absolute;
+    min-width:50%;
+
     border: solid 1px;
     background-color:rgba(255, 255, 255, .5);
-    border-radius: 10px;
-    justify-content: center;
-    position: absolute;
+    border-radius: 10px;    
 }
 
-#gananciaM1{
-    margin-top: 15px;
-    margin-left: 52px;
-    
+#gananciaM1, #gananciaM2{
+    margin-top: 5%;
+    margin-left: 21%;
+    align-items: center;
+    align-self: center;
+    justify-content: center; 
 }
-
+/*
 #gananciaM2{
     margin-top: 15px;
     margin-left: 52px;
-}
+}*/
 
 #mensajes1 , #mensajes2{
     background-color: white;
@@ -198,7 +201,7 @@ body{
 }
 
 #apuesta1 , #apuesta2 {
-    
+    max-height: 10px;
     font-weight: bold;
     color:yellow;
 
@@ -216,3 +219,218 @@ body{
     font-weight: 700;
 
 }
+
+/* IPAD */
+
+@media (max-width: 1024px) {
+    body div{
+        font-size: 15px;
+    }
+    
+    .botones_apuesta{
+       margin-left: 25%;
+       margin-top: 70%;
+    }
+    .maquina div{
+        min-height: 10px;
+        min-width: 10px;
+        resize: both;
+        overflow: auto;
+        max-height: fit-content;
+        width: auto;
+    }
+    #mensajes1,#mensajes2{
+        top: 23%;
+        right: 41%;
+        width:100px;
+    }
+    .letras-box{
+        position: absolute;
+        width:50%;
+        top: 40%;
+        right:38%;
+        margin-left:0px;
+        margin-right:0px;
+    }
+        
+    #LetraM2-A, #LetraM1-A, #LetraM2-B, #LetraM1-B{
+        overflow: hidden;
+        width: 25%;
+        font-size: 12px;
+    }
+
+    #LetraM2-A, #LetraM1-A{
+        margin-right:60px;
+        color: red;
+        font-weight: bold;
+        background-color: white;
+    }
+    #LetraM2-B, #LetraM1-B{
+        margin-left:0%;
+        color: red;
+        font-weight: bold;
+        background-color: white;
+    }
+    .botones_apuesta{
+        position: absolute;
+        top:0;
+        height: 500px;
+        margin-top:75%;
+        margin-left:25%;
+        overflow: hidden;
+    }
+    .botones_apuesta div{
+        height:30px;
+    }
+    .botones_apuesta btn{
+        padding-top: -10px;
+        overflow: hidden;
+    }
+
+    #SubirBajarApuesta1 div,#SubirBajarApuesta2 div{
+        overflow:hidden;
+        padding-top: -10px;
+        display: table;
+        align-content: center;
+        vertical-align: center;
+        width:55px;
+    }
+
+    #btAPOSTAR1, #btAPOSTAR2{
+        position: absolute;
+        overflow:hidden;
+        height: 30px;
+        font-size: 12px;
+        width: 150px;
+    }
+    #gananciaM1, #gananciaM2{
+        width:80px;
+        margin-left:50px;
+        margin-top: 23px;
+        font-size:10px;
+        height: 20px;
+    }
+}
+
+@media (orientation:portrait){
+    body div{
+        font-size: 15px;
+        overflow:hidden;
+    }
+    
+    #d_nombre div,#d_monedas div,#d_ganancias div{
+        font-size: 15px;
+        padding:0px;
+        overflow:visible
+    }
+    #d_nombre,#d_monedas,#d_ganancias{
+        padding:5px;
+    }
+    #nombre,#monedas,#ganancia{
+        text-align: end;
+        padding-right:10px;
+    }
+
+
+    #maquinaA,#maquinaB{
+        flex:auto;
+        margin-top: -135px;
+        margin-bottom: -135px;
+        position:relative;
+        transform:scale(1, 0.55);
+
+    }
+
+    .botones_apuesta{
+       margin-left: 25%;
+       margin-top: 70%;
+    }
+    .maquina div{
+        min-height: 10px;
+        min-width: 10px;
+        resize: both;
+        overflow: auto;
+        max-height: fit-content;
+        width: auto;
+    }
+    #mensajes1,#mensajes2{
+        top: 23%;
+        right: 36%;
+        width:200px;
+        height: 40px;
+        font-size: 25px;
+    }
+    .letras-box{
+        position: absolute;
+        width:20px;
+        top: 40%;
+        right:37.5%;
+        margin-left:0px;
+        margin-right:0px;
+    }
+        
+    #LetraM2-A, #LetraM1-A, #LetraM2-B, #LetraM1-B{
+        overflow: hidden;
+        min-width: 50px;
+        font-size: 30px;
+    }
+
+    #LetraM2-A, #LetraM1-A{
+        margin-right:80px;
+        color: red;
+        font-weight: bold;
+        background-color: white;
+    }
+    #LetraM2-B, #LetraM1-B{
+        margin-left:0%;
+        color: red;
+        font-weight: bold;
+        background-color: white;
+    }
+    .botones_apuesta{
+        position: absolute;
+        top:0;
+        height: 500px;
+        margin-top:80%;
+        margin-left:30%;
+        overflow: hidden;
+    }
+    .botones_apuesta div{
+        height:40px;
+    }
+    .botones_apuesta btn{
+        padding-top: -5px;
+        overflow: hidden;
+    }
+
+    #SubirBajarApuesta1 div,#SubirBajarApuesta2 div{
+        overflow:hidden;
+        padding-top: -10px;
+        display: table;
+        align-content: center;
+        vertical-align: center;
+        width:55px;
+    }
+
+    #btAPOSTAR1, #btAPOSTAR2{
+        position: absolute;
+        overflow:hidden;
+        height: 30px;
+        font-size: 12px;
+        width: 150px;
+    }
+    #gananciaM1, #gananciaM2{
+        width:120px;
+        margin-left:30px;
+        margin-top: 23px;
+        font-size:15px;
+        height: 30px;
+    }
+}
+
+@media (min-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ }
+@media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */ }
+@media (min-width:600px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ }
+@media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }
