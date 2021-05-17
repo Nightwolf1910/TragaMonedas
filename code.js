@@ -1,8 +1,6 @@
 var win=false; //flag
 var animToggleA=false;
 var animToggleB=false;
-var cambiarBotonA=false;
-var cambiarBotonB=false;
 var apuestaCobrarA;
 var apuestaCobrarB;
 //JUEGO - INSTALACION =========
@@ -179,89 +177,102 @@ imprimirIntento(i, maquina, intento)
 
 //AQUI TERMINA EL CÓDIGO DEL PROFE
 
-var monedas;
 
 var posAleatoria;
 var nomAnimalesAnonimos = [
     "Mono Anónimo", "Perro Anónimo", "Gato Anónimo", "Lemur Anónimo", "Cerdo Anónimo", "Loro Anónimo", "Ratón Anónimo", "Lagarto Anónimo", "T-rex Anónimo"
 ]
-var primeraVez=true;
+var nombreCambiadoPorPrimeraVez=false;
 var modalBienvenida;
+var gananciaAux;
 var usuarios=[
     {
+        id:1,
         nombre:"",
         monedas:200,
         numeroDeApuestas:0,
         ganancia:0
     },
     {
+        id:2,
         nombre:"Billy",
         monedas:500,
         numeroDeApuestas:8,
         ganancia:160
     },
     {
+        id:3,
         nombre:"Mario",
         monedas:350,
         numeroDeApuestas:6,
         ganancia:50
     },
     {
+        id:4,
         nombre:"Jose",
         monedas:600,
         numeroDeApuestas:15,
         ganancia:250
     },
     {
+        id:5,
         nombre:"Alberto",
         monedas:400,
         numeroDeApuestas:20,
         ganancia:200
     },
     {
+        id:6,
         nombre:"Luis",
         monedas:450,
         numeroDeApuestas:10,
         ganancia:50
     },
     {
+        id:7,
         nombre:"Angel",
         monedas:210,
         numeroDeApuestas:9,
         ganancia:100
     },
     {
+        id:8,
         nombre:"Javier",
         monedas:250,
         numeroDeApuestas:3,
         ganancia:30
     },
     {
+        id:9,
         nombre:"Olenka",
         monedas:300,
         numeroDeApuestas:10,
         ganancia:60
     },
     {
+        id:10,
         nombre:"Fabricio",
         monedas:450,
         numeroDeApuestas:13,
         ganancia:200
     },
     {
+        id:11,
         nombre:"Carlos",
         monedas:310,
         numeroDeApuestas:6,
         ganancia:40
     },
     {
+        id:12,
         nombre:"Renato",
         monedas:360,
         numeroDeApuestas:5,
         ganancia:50
     },
 ]
-
+var jugador= usuarios.find(x => x.id == 1);
+var monedas=jugador.monedas;
 
 const asignarNombreAnimal = () =>{
     posAleatoria = Math.floor(Math.random() * 9);
@@ -374,7 +385,6 @@ const butAbrirRankingOnClick=()=>{
     ordenarUsuarios(usuarios);
     cargarTablaRanking();
     modalCrearRanking.toggle();
-    console.log(usuarios[0]['nombre']);
 }
 const butCambiarNombreOnClick=()=>{
     modalCambiarNombre.toggle();
@@ -393,8 +403,14 @@ const butIngresarNombreInicialOnClick=()=>{
     document.getElementById("nombre").innerText=usuarios[0]['nombre'];
 }
 const butIngresarNombreCambiadoOnClick=()=>{
-    usuarios[0]['nombre']=document.getElementById("nombreCambiado").value;
-    document.getElementById("nombre").innerText=usuarios[0]['nombre']; 
+    jugador.nombre=document.getElementById("nombreCambiado").value;
+    document.getElementById("nombre").innerText=jugador.nombre;
+    if(nombreCambiadoPorPrimeraVez==false){
+        //const result = usuarios.find(x => x.id == 1);
+        monedas=200;
+        document.querySelector("#monedas").innerText=monedas;
+        nombreCambiadoPorPrimeraVez=true;
+    }
     setApuestas10();
 }
 
@@ -415,11 +431,12 @@ const ApostarOnClickMaquinaA = async () =>{
     var apuesta = parseInt(document.getElementById("apuesta1").innerHTML);
     //var text = document.getElementById("btAPOSTAR1").innerHTML;
 
-    if(cambiarBotonA==false){
+    if(document.querySelector("#btAPOSTAR1").innerText=="APOSTAR"){
         animToggleA=true;
         animacionMA()
         movLetrasMA_1()
         realizarApuesta(apuesta);
+        jugador.numeroDeApuestas++;
         apostar1.disabled=true;
         R1.disabled=true;
         L1.disabled=true;
@@ -443,12 +460,12 @@ document.getElementById("btAPOSTAR1").addEventListener("click", ApostarOnClickMa
 const ApostarOnClickMaquinaB = async () =>{
     var apuesta = parseInt(document.getElementById("apuesta2").innerHTML);
 
-    if(cambiarBotonB==false){
+    if(document.querySelector("#btAPOSTAR2").innerText=="APOSTAR"){
         animToggleB=true;
         animacionMB()
         movLetrasMB_1()
         realizarApuesta(apuesta);
-    
+        jugador.numeroDeApuestas++;
         apostar2.disabled=true;
         R2.disabled=true;
         L2.disabled=true;
@@ -583,9 +600,10 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
 
             const msjGanancia = document.querySelector("#gananciaM1");
             msjGanancia.innerHTML = `${ganTotal}`
-
+            
             const cobrar=document.querySelector("#btAPOSTAR1");
             cobrar.innerText="COBRAR";
+            gananciaAux= parseInt(msjGanancia.innerText);
         }else{
             L2.disabled=true;
             R2.disabled=true;
@@ -598,8 +616,10 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
 
             const msjGanancia = document.querySelector("#gananciaM2");
             msjGanancia.innerHTML = `${ganTotal}`
+
             const cobrar=document.querySelector("#btAPOSTAR2");
             cobrar.innerText="COBRAR";
+            gananciaAux= parseInt(msjGanancia.innerText);
         }
         
     }else{
@@ -674,7 +694,7 @@ const crearFila=(usuarios,n)=>{
     if(usuarios.numeroDeApuestas!=0){
         tdGananciaPromedio.innerText=parseFloat(usuarios.ganancia/usuarios.numeroDeApuestas).toFixed(2);
     }else{
-        tdGananciaPromedio.innerText=0;
+        tdGananciaPromedio.innerText=parseFloat(0).toFixed(2);
     }
     
     tr.appendChild(tdId);
@@ -720,19 +740,19 @@ const verificarB = () =>{
 }
 
 const funcionCobrarA = () =>{
-    const cobrar=document.querySelector("#btAPOSTAR1");
-    cobrar.innerText="APOSTAR";
     ganarApuesta(apuestaCobrarA);
     R1.disabled=false;
     L1.disabled=false;
+    jugador.ganancia=jugador.ganancia+gananciaAux;
+    document.querySelector("#ganancia").innerText=jugador.ganancia;
 }
 
 const funcionCobrarB = () =>{
-    const cobrar=document.querySelector("#btAPOSTAR2");
-    cobrar.innerText="APOSTAR";
     ganarApuesta(apuestaCobrarB);
     R2.disabled=false;
     L2.disabled=false;
+    jugador.ganancia=jugador.ganancia+gananciaAux;
+    document.querySelector("#ganancia").innerText=jugador.ganancia;
 }
 
 const main =async () =>{
@@ -740,14 +760,9 @@ const main =async () =>{
     startMonedas();
     setApuestas10();
     //Mostrar la ventana bienvenida una vez
-    localStorage.setItem("primera vez",primeraVez);
     const divBienvenida=document.querySelector("#bienvenida");
     modalBienvenida=new bootstrap.Modal(divBienvenida);
-    if(primeraVez==true){
-        modalBienvenida.toggle();
-        primeraVez=false;
-        localStorage.setItem("primera vez",primeraVez);
-    }
+    modalBienvenida.toggle();
     const divModalRanking=document.querySelector("#modalRanking");
     modalCrearRanking=new bootstrap.Modal(divModalRanking);
     const butAbrirRanking=document.querySelector("#ranking");
