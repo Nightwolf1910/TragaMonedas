@@ -1,6 +1,10 @@
 var win=false; //flag
 var animToggleA=false;
 var animToggleB=false;
+var cambiarBotonA=false;
+var cambiarBotonB=false;
+var apuestaCobrarA;
+var apuestaCobrarB;
 //JUEGO - INSTALACION =========
 function bernoulli(p){
     return 1 && ( Math.random() < p ) || 0 
@@ -84,14 +88,18 @@ function imprimirIntento(i, maquina, intento, apuesta){
     var letra2 = letras[1];
 
     if(maquina == 'maquinaA'){
+        apuestaCobrarA = gananciaTotal;
         const letraA1 = document.querySelector("#LetraM1-A");
         letraA1.innerHTML = `${letra1}`
         movLetrasMA_2(letra2,resultadoWin, maquina,apuesta,gananciaTotal)
     }else{
+        apuestaCobrarB = gananciaTotal;
         const letraA1 = document.querySelector("#LetraM2-A");
         letraA1.innerHTML = `${letra1}`
         movLetrasMB_2(letra2,resultadoWin, maquina,apuesta,gananciaTotal)
     }
+
+    
     
     /*
     if(resultadoWin != 0){
@@ -407,84 +415,96 @@ function sleep(ms) {
 
 const ApostarOnClickMaquinaA = async () =>{
     var apuesta = parseInt(document.getElementById("apuesta1").innerHTML);
-    animToggleA=true;
-    animacionMA()
-    movLetrasMA_1()
-    realizarApuesta(apuesta);
-    jugador.numeroDeApuestas++;
+    //var text = document.getElementById("btAPOSTAR1").innerHTML;
 
-    document.getElementById("btAPOSTAR1").disabled=true;
-    document.getElementById("btR1").disabled=true;
-    document.getElementById("btL1").disabled=true;
-    if(document.getElementById("apuesta2").innerText>monedas){
-        document.getElementById("btAPOSTAR2").disabled=true;
-        document.getElementById("btR2").disabled=true;
-        document.getElementById("btL2").disabled=false;
-    }
-    await sleep(2000);
-    if(document.getElementById("apuesta1").innerText>monedas){
-        document.getElementById("btAPOSTAR1").disabled=true;
-        document.getElementById("btR1").disabled=true;
-        document.getElementById("btL1").disabled=false;
-    }else{
-        document.getElementById("btAPOSTAR1").disabled=false;
-        document.getElementById("btR1").disabled=false;
-        document.getElementById("btL1").disabled=false;
-    }
-    if(document.getElementById("apuesta2").innerText<monedas){
-        document.getElementById("btAPOSTAR2").disabled=false;
-        document.getElementById("btR2").disabled=false;
-        document.getElementById("btL2").disabled=false;
-    }
-    if(monedas==0){
+    if(cambiarBotonA==false){
+        animToggleA=true;
+        animacionMA()
+        movLetrasMA_1()
+        realizarApuesta(apuesta);
+        jugador.numeroDeApuestas++;
         document.getElementById("btAPOSTAR1").disabled=true;
         document.getElementById("btR1").disabled=true;
         document.getElementById("btL1").disabled=true;
-        document.getElementById("btAPOSTAR2").disabled=true;
-        document.getElementById("btR2").disabled=true;
-        document.getElementById("btL2").disabled=true;
+        if(document.getElementById("apuesta2").innerText>monedas){
+            document.getElementById("btAPOSTAR2").disabled=true;
+            document.getElementById("btR2").disabled=true;
+            document.getElementById("btL2").disabled=false;
+        }
+        await sleep(2000);
+        if(document.getElementById("apuesta1").innerText>monedas){
+            document.getElementById("btAPOSTAR1").disabled=true;
+            document.getElementById("btR1").disabled=true;
+            document.getElementById("btL1").disabled=false;
+        }else{
+            document.getElementById("btAPOSTAR1").disabled=false;
+            document.getElementById("btR1").disabled=false;
+            document.getElementById("btL1").disabled=false;
+        }
+        if(document.getElementById("apuesta2").innerText<monedas){
+            document.getElementById("btAPOSTAR2").disabled=false;
+            document.getElementById("btR2").disabled=false;
+            document.getElementById("btL2").disabled=false;
+        }
+        if(monedas==0){
+            document.getElementById("btAPOSTAR1").disabled=true;
+            document.getElementById("btR1").disabled=true;
+            document.getElementById("btL1").disabled=true;
+            document.getElementById("btAPOSTAR2").disabled=true;
+            document.getElementById("btR2").disabled=true;
+            document.getElementById("btL2").disabled=true;
+        }
+    }else{
+        funcionCobrarA()
+        cambiarBotonA=false;
     }
+
 }
 document.getElementById("btAPOSTAR1").addEventListener("click", ApostarOnClickMaquinaA);
 
 const ApostarOnClickMaquinaB = async () =>{
     var apuesta = parseInt(document.getElementById("apuesta2").innerHTML);
-    animToggleB=true;
-    animacionMB()
-    movLetrasMB_1()
-    realizarApuesta(apuesta);
-    jugador.numeroDeApuestas++;
 
-    document.getElementById("btAPOSTAR2").disabled=true;
-    document.getElementById("btR2").disabled=true;
-    document.getElementById("btL2").disabled=true;
-    if(document.getElementById("apuesta1").innerText>monedas){
-        document.getElementById("btAPOSTAR1").disabled=true;
-        document.getElementById("btR1").disabled=true;
-        document.getElementById("btL1").disabled=false;
-    }
-    await sleep(2000);
-    if(document.getElementById("apuesta2").innerText>monedas){
-        document.getElementById("btAPOSTAR2").disabled=true;
-        document.getElementById("btR2").disabled=true;
-        document.getElementById("btL2").disabled=false;
-    }else{
-        document.getElementById("btAPOSTAR2").disabled=false;
-        document.getElementById("btR2").disabled=false;
-        document.getElementById("btL2").disabled=false;
-    }
-    if(document.getElementById("apuesta1").innerText<monedas){
-        document.getElementById("btAPOSTAR1").disabled=false;
-        document.getElementById("btR1").disabled=false;
-        document.getElementById("btL1").disabled=false;
-    }
-    if(monedas==0){
-        document.getElementById("btAPOSTAR1").disabled=true;
-        document.getElementById("btR1").disabled=true;
-        document.getElementById("btL1").disabled=true;
+    if(cambiarBotonB==false){
+        animToggleB=true;
+        animacionMB()
+        movLetrasMB_1()
+        realizarApuesta(apuesta);
+        jugador.numeroDeApuestas++;
         document.getElementById("btAPOSTAR2").disabled=true;
         document.getElementById("btR2").disabled=true;
         document.getElementById("btL2").disabled=true;
+        if(document.getElementById("apuesta1").innerText>monedas){
+            document.getElementById("btAPOSTAR1").disabled=true;
+            document.getElementById("btR1").disabled=true;
+            document.getElementById("btL1").disabled=false;
+        }
+        await sleep(2000);
+        if(document.getElementById("apuesta2").innerText>monedas){
+            document.getElementById("btAPOSTAR2").disabled=true;
+            document.getElementById("btR2").disabled=true;
+            document.getElementById("btL2").disabled=false;
+        }else{
+            document.getElementById("btAPOSTAR2").disabled=false;
+            document.getElementById("btR2").disabled=false;
+            document.getElementById("btL2").disabled=false;
+        }
+        if(document.getElementById("apuesta1").innerText<monedas){
+            document.getElementById("btAPOSTAR1").disabled=false;
+            document.getElementById("btR1").disabled=false;
+            document.getElementById("btL1").disabled=false;
+        }
+        if(monedas==0){
+            document.getElementById("btAPOSTAR1").disabled=true;
+            document.getElementById("btR1").disabled=true;
+            document.getElementById("btL1").disabled=true;
+            document.getElementById("btAPOSTAR2").disabled=true;
+            document.getElementById("btR2").disabled=true;
+            document.getElementById("btL2").disabled=true;
+        }
+    }else{
+        funcionCobrarB()
+        cambiarBotonB=false;
     }
 }
 document.getElementById("btAPOSTAR2").addEventListener("click", ApostarOnClickMaquinaB);
@@ -590,9 +610,9 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
     
     if(resultWin != 0){
         win = true;
-        ganarApuesta(ganTotal);
 
         if(maq == 'maquinaA'){
+            cambiarBotonA = true;
             animToggleA=false;
             animacionMA();
             const msjWin = document.querySelector("#mensajes1");
@@ -603,7 +623,10 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
 
             jugador.ganancia=jugador.ganancia+parseInt(msjGanancia.innerText);
             document.querySelector("#ganancia").innerText=jugador.ganancia;
+            const cobrar=document.querySelector("#btAPOSTAR1");
+            cobrar.innerText="COBRAR";
         }else{
+            cambiarBotonB = true;
             animToggleB=false;
             animacionMB();
             const msjWin = document.querySelector("#mensajes2");
@@ -613,10 +636,11 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
             msjGanancia.innerHTML = `${ganTotal}`
 
             jugador.ganancia=jugador.ganancia+parseInt(msjGanancia.innerText);
-            document.querySelector("#ganancia").innerText=jugador.ganancia;
+            document.querySelector("#ganancia").innerText=jugador.ganancia; 
+            const cobrar=document.querySelector("#btAPOSTAR2");
+            cobrar.innerText="COBRAR";
         }
-        const cobrar=document.querySelector("#btAPOSTAR1");
-        cobrar.innerText="COBRAR";   
+        
     }else{
         win = false;
 
@@ -706,6 +730,18 @@ const seleccionarTexto = () =>{
     document.querySelector("#nombreInicio").select();
 }
 
+const funcionCobrarA = () =>{
+    const cobrar=document.querySelector("#btAPOSTAR1");
+    cobrar.innerText="APOSTAR";
+    ganarApuesta(apuestaCobrarA);
+}
+
+const funcionCobrarB = () =>{
+    const cobrar=document.querySelector("#btAPOSTAR2");
+    cobrar.innerText="APOSTAR";
+    ganarApuesta(apuestaCobrarB);
+}
+
 const main =async () =>{
     asignarNombreAnimal();
     startMonedas();
@@ -780,5 +816,17 @@ function btnlobby() {
  } 
  window.addEventListener('load', btngirar, false); 
 
- // 
+ // Audio al Ganar y audio al Perder FASE BETA v0.9
+
+ function audioGanaryPerder (){
+     var audioGP=document.getElementById('audio-win');
+     
+     if(win.valueOf(win) == false){
+        audioGP.play();
+     }
+     else{
+         audioGP.false();
+     }
+ }
+ window.addEventListener('load', audioGanaryPerder, false);
 
