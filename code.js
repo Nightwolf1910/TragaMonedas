@@ -724,5 +724,17 @@ function btnlobby() {
  } 
  window.addEventListener('load', btngirar, false); 
 
- // 
+ // Audio al Ganar y audio al Perder FASE BETA v0.9
+
+ function audioGanaryPerder (){
+     var audioGP=document.getElementById('audio-win');
+     
+     if(win.valueOf(win) == false){
+        audioGP.play();
+     }
+     else{
+         audioGP.false();
+     }
+ }
+ window.addEventListener('load', audioGanaryPerder, false);
 
