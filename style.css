@@ -362,16 +362,16 @@ body{
     }
     .letras-box{
         position: absolute;
-        width:80%;
+        width:20px;
         top: 40%;
-        right:41;
+        right:37.5%;
         margin-left:0px;
         margin-right:0px;
     }
         
     #LetraM2-A, #LetraM1-A, #LetraM2-B, #LetraM1-B{
         overflow: hidden;
-        width: 25%;
+        min-width: 50px;
         font-size: 30px;
     }
 
