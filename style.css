@@ -2,8 +2,24 @@ html, body{
     overflow: hidden;
 }
 
+#d_nombre{
+    font-weight: bold;
+    color: black;
+    font-size: 150%;
+    background-color: rgba(182, 59, 182, 0.63);
+}
 
+#d_monedas{
+    color: black;
+    font-size: 150%;
+    background-color: rgba(182, 170, 59, 0.63);
+}
 
+#d_ganancias{
+    color: black;
+    font-size: 130%;
+    background-color: rgba(63, 182, 59, 0.63);
+}
 
 body{
     position: relative;
