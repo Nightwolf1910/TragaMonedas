@@ -182,8 +182,9 @@ imprimirIntento(i, maquina, intento)
 
 var posAleatoria;
 var nomAnimalesAnonimos = [
-    "Mono Anónimo", "Perro Anónimo", "Gato Anónimo", "Lemur Anónimo", "Cerdo Anónimo", "Loro Anónimo", "Ratón Anónimo", "Lagarto Anónimo", "T-rex Anónimo"
+    "MONO ANÓNIMO", "PERRO ANÓNIMO", "GATO ANÓNIMO", "LEMUR ANÓNIMO", "CERDO ANÓNIMO", "LORO ANÓNIMO", "RATÓN ANÓNIMO","ULIMEÑO ANÓNIMO", "LAGARTO ANÓNIMO", "T-REX ANÓNIMO"
 ]
+
 var nombreCambiadoPorPrimeraVez=false;
 var modalBienvenida;
 var gananciaAux;
