@@ -357,7 +357,10 @@ const apostarMenos2 = () => {
 }
 document.getElementById("btL2").addEventListener("click", apostarMenos2);
 const butAbrirRankingOnClick=()=>{
+    ordenarUsuarios(usuarios);
+    cargarTablaRanking();
     modalCrearRanking.toggle();
+    console.log(usuarios[0]['nombre']);
 }
 const butCambiarNombreOnClick=()=>{
     modalCambiarNombre.toggle();
@@ -587,6 +590,8 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
             const msjGanancia = document.querySelector("#gananciaM2");
             msjGanancia.innerHTML = `${ganTotal}`
         }
+        const cobrar=document.querySelector("#btAPOSTAR1");
+        cobrar.innerText="COBRAR";
     }else{
         win = false;
 
@@ -648,7 +653,12 @@ const crearFila=(usuarios,n)=>{
     tdNombre.innerText=usuarios.nombre;
     tdGanancia.innerText=usuarios.ganancia;
     tdNumeroDeApuestas.innerText=usuarios.numeroDeApuestas;
-    tdGananciaPromedio.innerText=parseFloat(usuarios.ganancia/usuarios.numeroDeApuestas).toFixed(2);
+    if(usuarios.numeroDeApuestas!=0){
+        tdGananciaPromedio.innerText=parseFloat(usuarios.ganancia/usuarios.numeroDeApuestas).toFixed(2);
+    }else{
+        tdGananciaPromedio.innerText=0;
+    }
+    
     tr.appendChild(tdId);
     tr.appendChild(tdNombre);
     tr.appendChild(tdGanancia);
@@ -706,10 +716,6 @@ const main =async () =>{
 
     document.getElementById("monedas").innerText=usuarios[0]['monedas'];
     document.getElementById("ganancia").innerText=usuarios[0]['ganancia'];
-    
-    ordenarUsuarios(usuarios);
-    cargarTablaRanking();
-    console.log(usuarios);
 
     document.getElementById("ingresarNombreInicio").addEventListener("click",butIngresarNombreInicialOnClick);
     document.getElementById("ingresarNombreCambiado").addEventListener("click",butIngresarNombreCambiadoOnClick);
