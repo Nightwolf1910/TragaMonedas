@@ -442,15 +442,15 @@ const ApostarOnClickMaquinaA = async () =>{
         L1.disabled=true;
     }else{
         funcionCobrarA()
-        cambiarBotonA=false;
-        if(cambiarBotonB==false){
+        document.querySelector("#btAPOSTAR1").innerText=="APOSTAR";
+        if(document.querySelector("#btAPOSTAR2").innerText=="APOSTAR"){
             apostar2.disabled=false;
             L2.disabled=false;
             R2.disabled=false;
             verificarB();
         }
     }
-    if(cambiarBotonB==false){
+    if(document.querySelector("#btAPOSTAR2").innerText=="APOSTAR"){
         verificarB();
     }
 
@@ -472,15 +472,15 @@ const ApostarOnClickMaquinaB = async () =>{
 
     }else{
         funcionCobrarB()
-        cambiarBotonB=false;
-        if(cambiarBotonA==false){
+        document.querySelector("#btAPOSTAR2").innerText=="APOSTAR";
+        if(document.querySelector("#btAPOSTAR1").innerText=="APOSTAR"){
             apostar1.disabled=false;
             L1.disabled=false;
             R1.disabled=false;
             verificarA();
         }
     }
-    if(cambiarBotonA==false){
+    if(document.querySelector("#btAPOSTAR1").innerText=="APOSTAR"){
         verificarA();   
     }
 }
@@ -591,7 +591,7 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
         if(maq == 'maquinaA'){
             L1.disabled=true;
             R1.disabled=true;
-            cambiarBotonA = true;
+            document.querySelector("#btAPOSTAR1").innerText=="COBRAR";
             apostar1.disabled=false;
             animToggleA=false;
             animacionMA();
@@ -607,7 +607,7 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
         }else{
             L2.disabled=true;
             R2.disabled=true;
-            cambiarBotonB = true;
+            document.querySelector("#btAPOSTAR2").innerText=="COBRAR";
             apostar2.disabled=false;
             animToggleB=false;
             animacionMB();
