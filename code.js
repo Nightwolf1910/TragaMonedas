@@ -442,6 +442,7 @@ const ApostarOnClickMaquinaA = async () =>{
         apostar1.disabled=true;
         R1.disabled=true;
         L1.disabled=true;
+         //implementar audio al girar en la maquina B
         var audiogirar=document.getElementById('audio-girar'); 
         audiogirar.play(); 
     }else{
@@ -473,6 +474,7 @@ const ApostarOnClickMaquinaB = async () =>{
         apostar2.disabled=true;
         R2.disabled=true;
         L2.disabled=true;
+        //implementar audio al girar en la maquina B
         var audiogirar=document.getElementById('audio-girar'); 
         audiogirar.play(); 
     }else{
@@ -592,6 +594,7 @@ const mostrarResultado = (resultWin, maq,apuest,ganTotal) =>{
     
     if(resultWin != 0){
         win = true;
+
 
         if(maq == 'maquinaA'){
             L1.disabled=true;
@@ -751,6 +754,8 @@ const funcionCobrarA = () =>{
     jugador.ganancia=jugador.ganancia+gananciaAux;
     document.querySelector("#ganancia").innerText=jugador.ganancia;
     cambiarBotonA=false;
+    var audiowin=document.getElementById('audio-win'); 
+    audiowin.play();
 }
 
 const funcionCobrarB = () =>{
@@ -760,6 +765,8 @@ const funcionCobrarB = () =>{
     jugador.ganancia=jugador.ganancia+gananciaAux;
     document.querySelector("#ganancia").innerText=jugador.ganancia;
     cambiarBotonB=false;
+    var audiowin=document.getElementById('audio-win'); 
+    audiowin.play();
 }
 
 const main =async () =>{
@@ -801,7 +808,7 @@ const main =async () =>{
 
 window.addEventListener("load",main);
 
-// Audio mute con boton para lobby. Fase Beta(v.02)
+// Audio mute con boton para lobby. Fase Beta(v.02) -> Finalizado.
 
 function btnlobby() { 
     var btnmusica=document.getElementById('musica'); 
@@ -836,17 +843,5 @@ function btnlobby() {
  } 
  window.addEventListener('load', btngirar, false); 
 */
- // Audio al Ganar y audio al Perder FASE BETA v0.9
 
- function audioGanaryPerder (){
-     var audioGP=document.getElementById('audio-win');
-     
-     if(win.valueOf(win) == false){
-        audioGP.play();
-     }
-     else{
-         audioGP.false();
-     }
- }
- window.addEventListener('load', audioGanaryPerder, false);
 
