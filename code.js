@@ -754,6 +754,7 @@ const funcionCobrarA = () =>{
     jugador.ganancia=jugador.ganancia+gananciaAux;
     document.querySelector("#ganancia").innerText=jugador.ganancia;
     cambiarBotonA=false;
+    //implementar audio al ganar y cobrar en la maquina A
     var audiowin=document.getElementById('audio-win'); 
     audiowin.play();
 }
@@ -765,6 +766,7 @@ const funcionCobrarB = () =>{
     jugador.ganancia=jugador.ganancia+gananciaAux;
     document.querySelector("#ganancia").innerText=jugador.ganancia;
     cambiarBotonB=false;
+    //implementar audio al ganar y cobrar en la maquina A
     var audiowin=document.getElementById('audio-win'); 
     audiowin.play();
 }
